@@ -20,14 +20,24 @@ async function loadPokemonData() {
     const artwork = fullData.sprites.other["official-artwork"].front_default;
     fullPokemons.push({ ...fullData, artwork: artwork });
   }
+<<<<<<< HEAD
+=======
+  console.log(fullPokemons);
+>>>>>>> 4b7acadc585d6a52aad077726248fd7b2a8350ed
   renderPokemonList(fullPokemons, offSet === 0);
 }
 
 function renderPokemonList(pokemons, clear = false) {
   const pokemonLists = document.getElementById("loadPokemon");
+<<<<<<< HEAD
  
   
   if (clear) pokemonLists.innerHTML = "";
+=======
+
+  if (clear) pokemonLists.innerHTML = "";
+
+>>>>>>> 4b7acadc585d6a52aad077726248fd7b2a8350ed
   for (let i = 0; i < pokemons.length; i++) {
     pokemonLists.innerHTML += PokedexCard(pokemons[i]);
  
@@ -40,3 +50,12 @@ function loadMorePokemon() {
   offSet += LIMIT;
   loadPokemonData();
 }
+
+function loadMorePokemon() {
+  offSet += LIMIT;
+  loadPokemonData();
+}
+
+// function openPokemonDialog(){
+
+// }
