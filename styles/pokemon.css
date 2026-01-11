@@ -24,7 +24,7 @@
 }
 
 .pokeCards:hover {
-  scale: calc(1.1);
+  scale: calc(1.05);
 }
 
 .pokeCards img:hover {
