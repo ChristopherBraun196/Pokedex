@@ -1,7 +1,9 @@
 .OverlayContainer {
-  display: flex;
-  gap: 24px;
-  margin: 100px;
+  display: grid;
+  grid-template-columns: repeat(5, 250px);
+  justify-content: center;
+  gap: 12px;
+  margin: 50px;
 }
 
 .pokeCards {
@@ -9,12 +11,16 @@
   flex-direction: column;
   align-content: center;
   align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;        
   position: relative;
-  height: 250px;
-  width: 250px;
-  background-color: grey;
-  justify-content: center;
+  height: 205px;
+  width: 241px;
+  background-image: url(../img/icons/PokeCardBackground.png);
+  background-size: cover;
+  background-position: center;
   border-radius: 36px;
+  margin-top: 15px;
 }
 
 .pokeCards:hover {
@@ -22,7 +28,7 @@
 }
 
 .pokeCards img:hover {
-  animation: shake 1s;
+  animation: shake 2s;
   animation-iteration-count: infinite;
 }
 
@@ -68,10 +74,80 @@
 }
 .PositionNumber {
   position: absolute;
-  top: 16px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 24px;
-  z-index: 2;
   padding-bottom: 12px;
+  color: rgb(218 218 218 / 90%);
+}
+.PokeElement {
+  display: flex;
+}
+
+.type {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: white;
+  margin: 4px;
+}
+
+.type.normal {
+  background: #a8a77a;
+}
+.type.fire {
+  background: #ee8130;
+}
+.type.water {
+  background: #6390f0;
+}
+.type.electric {
+  background: #f7d02c;
+  color: #000;
+}
+.type.grass {
+  background: #7ac74c;
+}
+.type.ice {
+  background: #96d9d6;
+  color: #000;
+}
+.type.fighting {
+  background: #c22e28;
+}
+.type.poison {
+  background: #a33ea1;
+}
+.type.ground {
+  background: #e2bf65;
+  color: #000;
+}
+.type.flying {
+  background: #a98ff3;
+}
+.type.psychic {
+  background: #f95587;
+}
+.type.bug {
+  background: #a6b91a;
+}
+.type.rock {
+  background: #b6a136;
+}
+.type.ghost {
+  background: #735797;
+}
+.type.dragon {
+  background: #6f35fc;
+}
+.type.dark {
+  background: #705746;
+}
+.type.steel {
+  background: #b7b7ce;
+  color: #000;
+}
+.type.fairy {
+  background: #d685ad;
 }

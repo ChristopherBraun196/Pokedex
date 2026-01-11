@@ -1,6 +1,7 @@
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=5";
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=20"
 const BASE_IMG =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/";
+
 
 function init() {
   loadPokemonData();

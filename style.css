@@ -1,5 +1,7 @@
 * {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Lugarismo";
 }
 
@@ -8,14 +10,34 @@
   src: url(./font/Lugrasimo/Lugrasimo-Regular.ttf);
 }
 
+h2 {
+  font-size: 18px;
+  color: rgb(218 218 218 / 90%);
+}
+
+body {
+  margin: 0;
+  background-color: rgba(143, 143, 80, 0.719);
+  overflow-x: hidden;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  background-image: url("./img/icons/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 160px;
-    padding-top: 16px;
-    background-color: rgb(143, 143, 80);
-    height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 160px;
+  padding-top: 16px;
+  background-color: rgb(143, 143, 80);
+  min-height: 100px;
 }
 
 header img {
@@ -24,21 +46,58 @@ header img {
   margin-right: 12px;
 }
 
-.HeaderBar{
-    display: flex;
-    align-items: center;
+.HeaderBar {
+  display: flex;
+  align-items: center;
 }
 
 .SearchBar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: rgba(143, 143, 80, 0.4);
+  justify-content: center;  
 }
 
 .SearchBar input {
-    border-radius: 20px;
-    height: 25px;
-    width: 300px;
+  border-radius: 20px;
+  height: 25px;
+  width: 300px;  
 }
 
+main {
+  margin-bottom: 15px;
+  background-image: url(./img/icons/background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  margin: 80px;
+  height: 75vh;
+  width: 90%;
+}
+
+.moreButton {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.moreButton button {
+  height: 50px;
+  width: 150px;
+  border-radius: 20px;
+  background-color: rgba(164, 103, 0, 0.2);
+}
+
+.moreButton button:hover {
+  scale: calc(1.1);
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 160px;
+  padding-top: 10px;
+  background-color: rgb(143, 143, 80);
+  height: 60px;
+}
