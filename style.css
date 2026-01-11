@@ -11,23 +11,17 @@
 }
 
 h2 {
-  font-size: 18px;
-  color: rgb(218 218 218 / 90%);
+    margin-top: 4px;
+    font-size: 20px;
+    color: rgb(218 218 218 / 90%);
 }
-
 body {
   margin: 0;
-  background-color: rgba(143, 143, 80, 0.719);
-  overflow-x: hidden;
-}
-
-.background {
-  position: fixed;
-  inset: 0;
-  background-image: url("./img/icons/background.jpg");
+  /* background-color: rgba(143, 143, 80, 0.719); */  
+  background-image: url(./img/icons/background.jpg);
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: center; 
+  
 }
 
 header {
@@ -71,14 +65,6 @@ header img {
 
 main {
   margin-bottom: 15px;
-  background-image: url(./img/icons/background.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 20px;
-  margin: 80px;
-  height: 75vh;
-  width: 90%;
   max-width: 1440px;
   margin: 0 auto;
 
@@ -96,6 +82,7 @@ main {
 .moreButton button {
   height: 50px;
   width: 150px;
+  margin-top: 18px;
   border-radius: 20px;
   background-color: rgba(164, 103, 0, 0.2);
 }
@@ -112,10 +99,10 @@ footer {
   padding-top: 10px;
   background-color: rgb(143, 143, 80);
   height: 60px;
-  margin-top: 120px;
+  margin-top: 40px;
 }
 
 .FooterLinks {
   max-width: 1440px;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
