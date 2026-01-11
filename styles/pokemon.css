@@ -1,9 +1,11 @@
 .OverlayContainer {
-  display: grid;
-  grid-template-columns: repeat(5, 250px);
-  justify-content: center;
-  gap: 12px;
-  margin: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0px;   
+    max-height: 910px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .pokeCards {
@@ -12,15 +14,15 @@
   align-content: center;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 40px;        
+  padding-top: 35px;
   position: relative;
-  height: 205px;
-  width: 241px;
+  height: 235px;
+  width: 170px;
   background-image: url(../img/icons/PokeCardBackground.png);
   background-size: cover;
   background-position: center;
-  border-radius: 36px;
-  margin-top: 15px;
+  border-radius: 7px;
+  
 }
 
 .pokeCards:hover {
@@ -69,9 +71,10 @@
 }
 
 .pokeCards img {
-  width: 100px;
-  height: auto;
+    width: 130px;
+    height: auto;
 }
+
 .PositionNumber {
   position: absolute;
   top: 10px;

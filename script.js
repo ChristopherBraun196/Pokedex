@@ -1,14 +1,16 @@
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=20"
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 const BASE_IMG =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/";
+const LIMIT = 20;
 
+let offSet = 0;
 
 function init() {
   loadPokemonData();
 }
 
 async function loadPokemonData() {
-  const response = await fetch(BASE_URL);
+  const response = await fetch(`${BASE_URL}?limit=${LIMIT}&offset=${offSet}`);
   const data = await response.json();
 
   const fullPokemons = [];
@@ -17,18 +19,27 @@ async function loadPokemonData() {
     const res = await fetch(pokemon.url);
     const fullData = await res.json();
     const artwork = fullData.sprites.other["official-artwork"].front_default;
-    fullPokemons.push({...fullData,artwork: artwork}
-    );
+    fullPokemons.push({ ...fullData, artwork: artwork });
   }
   console.log(fullPokemons);
-  renderPokemonList(fullPokemons);
+  renderPokemonList(fullPokemons, offSet === 0);
 }
 
-function renderPokemonList(pokemons) {
+function renderPokemonList(pokemons, clear = false) {
   const pokemonLists = document.getElementById("loadPokemon");
-  pokemonLists.innerHTML = "";
+
+  if (clear) pokemonLists.innerHTML = "";
 
   for (let i = 0; i < pokemons.length; i++) {
     pokemonLists.innerHTML += PokedexCard(pokemons[i]);
   }
 }
+
+function loadMorePokemon() {
+  offSet += LIMIT;
+  loadPokemonData();
+}
+
+// function openPokemonDialog(){
+
+// }
