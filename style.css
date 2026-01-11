@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  font-family: "Lugarismo";
+}
+
+@font-face {
+  font-family: "Lugarismo";
+  src: url(./font/Lugrasimo/Lugrasimo-Regular.ttf);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 160px;
+    padding-top: 16px;
+    background-color: rgb(143, 143, 80);
+    height: 100px;
+}
+
+header img {
+  width: 50px;
+  height: auto;
+  margin-right: 12px;
+}
+
+.HeaderBar{
+    display: flex;
+    align-items: center;
+}
+
+.SearchBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(143, 143, 80, 0.4);
+}
+
+.SearchBar input {
+    border-radius: 20px;
+    height: 25px;
+    width: 300px;
+}
+

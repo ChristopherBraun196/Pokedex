@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex</title>
+    <link rel="icon" type="image/x-icon" href="./img/icons/Pokeball.svg" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/pokemon.css" />
+    <script src="./scripts/templates.js"></script>
+  </head>
+  <body onload="init()">
+    <header>
+      <div class="HeaderBar">
+        <img src="./img/icons/pokeball.png" alt="Pokeball" />
+        <h1>Pokédex</h1>
+      </div>
+      <nav class="SearchBar">
+        <input type="text" placeholder="Search.." />
+      </nav>
+    </header>
+
+    <div class="OverlayContainer" id="loadPokemon"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
