@@ -12,7 +12,6 @@ function init() {
 async function loadPokemonData() {
   const response = await fetch(`${BASE_URL}?limit=${LIMIT}&offset=${offSet}`);
   const data = await response.json();
-
   const fullPokemons = [];
 
   for (const pokemon of data.results) {
@@ -21,25 +20,23 @@ async function loadPokemonData() {
     const artwork = fullData.sprites.other["official-artwork"].front_default;
     fullPokemons.push({ ...fullData, artwork: artwork });
   }
-  console.log(fullPokemons);
   renderPokemonList(fullPokemons, offSet === 0);
 }
 
 function renderPokemonList(pokemons, clear = false) {
   const pokemonLists = document.getElementById("loadPokemon");
-
+ 
+  
   if (clear) pokemonLists.innerHTML = "";
-
   for (let i = 0; i < pokemons.length; i++) {
     pokemonLists.innerHTML += PokedexCard(pokemons[i]);
+ 
+    
   }
+  
 }
 
 function loadMorePokemon() {
   offSet += LIMIT;
   loadPokemonData();
 }
-
-// function openPokemonDialog(){
-
-// }

@@ -1,6 +1,7 @@
 function PokedexCard(pokemon) {
+    console.log(pokemon.types[0].type.name)
   return `
-     <div onclick=openPokemonDialog() class="pokeCards" tabindex="0" role="button" aria-label="Open ${
+     <div class="pokeCards" tabindex="0" role="button" aria-label="Open ${
        pokemon.name
      }">
         <img src="${pokemon.artwork}"  alt="${pokemon.name}">        
