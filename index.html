@@ -13,17 +13,19 @@
   <body onload="init()">
     <div class="Background"></div>
     <header>
-  <div class="HeaderBar">
-    <div class="logo-container">
-      <img src="./img/icons/pokeball.png" alt="Pokeball" />
-      <h1>Pokédex</h1>
-    </div>
+      <div class="HeaderBar">
+        <div class="logo-container">
+          <a href="#">
+            <img src="./img/icons/pokeball.png" alt="Pokeball" />
+          </a>
+          <h1>Pokédex</h1>
+        </div>
 
-    <nav class="SearchBar" tabindex="0" aria-label="searchBar">
-      <input id="mySearch" type="text" placeholder="Search.." />        
-    </nav>
-  </div>
-</header>
+        <nav class="SearchBar" tabindex="0" aria-label="searchBar">
+          <input id="mySearch" type="text" placeholder="Search.." />
+        </nav>
+      </div>
+    </header>
     <main>
       <div class="OverlayContainer" id="loadPokemon"></div>
       <div class="moreButton">
@@ -33,10 +35,7 @@
 
     <dialog onclick="openPokemonDialog()"></dialog>
 
-    <footer>
-     
-      
-    </footer>
+    <footer></footer>
     <script src="./script.js"></script>
   </body>
 </html>

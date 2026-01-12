@@ -3,11 +3,18 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Lugarismo";
+  scroll-behavior: smooth;
 }
 
 @font-face {
   font-family: "Lugarismo";
   src: url(./font/Lugrasimo/Lugrasimo-Regular.ttf);
+}
+
+h1 {
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.801);
+  text-shadow: 2px 2px 4px #000000;
 }
 
 body {
@@ -53,7 +60,7 @@ header {
 }
 
 header img {
-  width: 50px;
+  width: 65px;
   height: auto;
   margin-right: 12px;
 }

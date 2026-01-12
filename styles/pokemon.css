@@ -18,7 +18,6 @@ h2:hover {
   justify-content: center;
   gap: 10px;
   margin: 0px;
-
   flex-direction: row;
   flex-wrap: wrap;
 }
