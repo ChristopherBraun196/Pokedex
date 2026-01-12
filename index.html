@@ -7,25 +7,25 @@
     <link rel="icon" type="image/x-icon" href="./img/icons/Pokeball.svg" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./styles/pokemon.css" />
-    <link rel="stylesheet" href="./styles/pokemonTypes.css">
+    <link rel="stylesheet" href="./styles/pokemonTypes.css" />
     <script src="./scripts/templates.js"></script>
   </head>
   <body onload="init()">
     <div class="Background"></div>
     <header>
-      <div class="HeaderBar">
-        <img src="./img/icons/pokeball.png" alt="Pokeball" />
-        <h1>Pokédex</h1>
-      </div>
-      <nav class="SearchBar" tabindex="0" aria-label="searchBar">
-        <input type="text" placeholder="Search.." />
-      </nav>
-    </header>
+  <div class="HeaderBar">
+    <div class="logo-container">
+      <img src="./img/icons/pokeball.png" alt="Pokeball" />
+      <h1>Pokédex</h1>
+    </div>
+
+    <nav class="SearchBar" tabindex="0" aria-label="searchBar">
+      <input id="mySearch" type="text" placeholder="Search.." />        
+    </nav>
+  </div>
+</header>
     <main>
       <div class="OverlayContainer" id="loadPokemon"></div>
-      <div class="OverlayContainer" id="loadPokemon">
-        <button onclick="loadMorePokemon()">LoadMore...</button>
-      </div>
       <div class="moreButton">
         <button onclick="loadMorePokemon()">LoadMore...</button>
       </div>
@@ -33,10 +33,9 @@
 
     <dialog onclick="openPokemonDialog()"></dialog>
 
-   
     <footer>
       <div class="FooterLinks">
-        Image by
+        <!-- Image by
         <a
           href="https://pixabay.com/users/dhaval121-2235247/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2713825"
           >Dhaval Solanki</a
@@ -57,7 +56,7 @@
           href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1572487"
           >Pixabay</a
         >
-      </div>
+      </div> -->
     </footer>
     <script src="./script.js"></script>
   </body>

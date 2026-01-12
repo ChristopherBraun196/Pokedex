@@ -20,7 +20,7 @@
 }
 
 .normal {
-  background: var(--type-normal);
+  background: var(--type-normal);  
 }
 .fire {
   background: var(--type-fire);

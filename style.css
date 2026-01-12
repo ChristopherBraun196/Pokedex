@@ -10,49 +10,53 @@
   src: url(./font/Lugrasimo/Lugrasimo-Regular.ttf);
 }
 
-h2 {
-  margin-top: 4px;
-  font-size: 20px;
-  color: rgb(218 218 218 / 90%);
-}
+
 body {
   margin: 0;
-  background-color: rgba(163, 163, 86, 0.719);
+  background-color: #0177a9;
 }
 
 header {
-  padding-left: -19px;
-  gap: 650px;
-  display: flex; 
-  background-color: rgb(143, 143, 80);
+  background-color: #006494;
   height: 75px;
-  margin-bottom: 50px;
   position: sticky;
   top: 0;
   z-index: 1;
-  flex-direction: row;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.HeaderBar {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.SearchBar {
+  display: flex;
+  align-items: center;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
 }
 
 header img {
   width: 50px;
   height: auto;
   margin-right: 12px;
-}
-
-.HeaderBar {
-  display: flex;
-  align-items: center;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-.SearchBar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1440px;
-  margin: 0 auto;
 }
 
 .SearchBar input {
@@ -82,14 +86,18 @@ main {
   height: 50px;
   width: 150px;
   margin-top: 18px;
-  border-radius: 20px;
-  background-color: rgb(143, 143, 80);
-  font-size: 16px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(66, 95, 224, 0.452);
+  border-radius: 28px;
+  border-style: groove;
+  border-bottom: white;
+  background-color: #006494;
+  font-size: 14px;
 }
 
 .moreButton button:hover {
   scale: calc(1.1);
-  background-color: rgb(143, 143, 80, 0.8);
+  background-color: rgba(0, 100, 148, 0.2);
   cursor: pointer;
 }
 
@@ -100,7 +108,7 @@ footer {
   align-items: center;
   padding-inline: 160px;
   padding-top: 10px;
-  background-color: rgb(143, 143, 80);
+  background-color: #006494;
   height: 60px;
   margin-top: 268px;
 }
