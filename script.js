@@ -24,8 +24,6 @@ async function loadPokemonData() {
 
     const pokemonObj = {...fullData, artwork };
 
-  //   allPokemons.push({ ...fullData, artwork: artwork });
-
   allPokemons.push(pokemonObj); // Speicher
   newPokemons.push(pokemonObj); // Neu Rendern
   }

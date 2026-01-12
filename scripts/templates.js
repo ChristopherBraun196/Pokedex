@@ -1,9 +1,9 @@
 function PokedexCard(pokemon) {
-    console.log(pokemon.types[0].type.name)
+  // console.log(pokemon.types[0].type.name);
   return `
-     <div class="pokeCards ${pokemon.types[0].type.name}"tabindex="0" role="button" aria-label="Open ${
-       pokemon.name
-     }">
+     <div class="pokeCards ${
+       pokemon.types[0].type.name
+     }"tabindex="0" role="button" aria-label="Open ${pokemon.name}">
         <img src="${pokemon.artwork}"  alt="${pokemon.name}">        
         <p class="PositionNumber">#${pokemon.id}</p>
         <h2> ${pokemon.name}</h2>
