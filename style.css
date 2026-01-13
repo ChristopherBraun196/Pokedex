@@ -107,6 +107,10 @@ main {
   cursor: pointer;
 }
 
+.dialogPosition{
+  margin: auto;
+}
+
 footer {
   display: flex;
 
