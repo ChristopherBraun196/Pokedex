@@ -14,7 +14,7 @@ function init() {
 async function loadPokemonData() {
   const response = await fetch(`${BASE_URL}?limit=${LIMIT}&offset=${offSet}`);
   const data = await response.json();
- 
+
   const newPokemons = [];
 
   for (const pokemon of data.results) {
@@ -22,26 +22,23 @@ async function loadPokemonData() {
     const fullData = await res.json();
     const artwork = fullData.sprites.other["official-artwork"].front_default;
 
-    const pokemonObj = {...fullData, artwork };
+    const pokemonObj = { ...fullData, artwork };
 
-  allPokemons.push(pokemonObj); // Speicher
-  newPokemons.push(pokemonObj); // Neu Rendern
+    allPokemons.push(pokemonObj); // Speicher
+    newPokemons.push(pokemonObj); // Neu Rendern
   }
-  
+
   renderPokemonList(newPokemons, offSet === 0);
 }
 
 function renderPokemonList(pokemons, clear = false) {
-  const pokemonLists = document.getElementById("loadPokemon"); 
-  
+  const pokemonLists = document.getElementById("loadPokemon");
+
   if (clear) pokemonLists.innerHTML = "";
-  
+
   for (let i = 0; i < pokemons.length; i++) {
     pokemonLists.innerHTML += PokedexCard(pokemons[i]);
- 
-    
   }
-  
 }
 
 function loadMorePokemon() {
@@ -49,6 +46,12 @@ function loadMorePokemon() {
   loadPokemonData();
 }
 
-// function openPokemonDialog(){
+function openPokemonDialog(pokemonId) {
+  const dialogRef = document.getElementById("openPokemonDialog");
 
-// }
+  const pokemon = allPokemons.find((p) => p.id === pokemonId);
+
+  dialogRef.innerHTML = BigPokedexCard(pokemon);
+
+  dialogRef.showModal();
+}
