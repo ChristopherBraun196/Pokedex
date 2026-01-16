@@ -26,7 +26,7 @@ function BigPokedexCard(pokemon) {
   return `
     <div class="bigCardContainer">
         <div class="bigCardHeader ${pokemon.types[0].type.name}">
-            <button class="closeBtn" id="closeDialog()">X</button>
+            <button class="closeBtn" onclick="closeBtn()">X</button>
             <div>
              <p>#${pokemon.id}</p>
               <h3>${pokemon.name}</h3>                
