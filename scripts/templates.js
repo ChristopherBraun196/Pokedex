@@ -3,7 +3,8 @@ function PokedexCard(pokemon) {
   return `
      <div onclick="openPokemonDialog(${pokemon.id})"class="pokeCards ${
     pokemon.types[0].type.name
-  }"tabindex="0" role="button" aria-label="Open ${pokemon.name}">
+  }"tabindex="0" role="button" aria-label="Open ${pokemon.name}"
+  onkeydown="openOnEnter(event, ${pokemon.id} )">
         <img src="${pokemon.artwork}"  alt="${pokemon.name}">        
         <p class="PositionNumber">#${pokemon.id}</p>
         <h2> ${pokemon.name}</h2>
@@ -25,7 +26,7 @@ function BigPokedexCard(pokemon) {
   return `
     <div class="bigCardContainer">
         <div class="bigCardHeader ${pokemon.types[0].type.name}">
-            <button class="closeBtn">X</button>
+            <button class="closeBtn" id="closeDialog()">X</button>
             <div>
              <p>#${pokemon.id}</p>
               <h3>${pokemon.name}</h3>                
@@ -35,15 +36,13 @@ function BigPokedexCard(pokemon) {
 
         <div class="bigCardBody">
             <div class="pokemonStats">
-            <h4>Base Stats</h4>
-              <p><strong>HP:</strong> ${pokemon.stats[0].base_stat}</p>
-              <p><strong>Attack:</strong> ${pokemon.stats[1].base_stat}</p>
+              <h4>Base Stats</h4>
+               <p><strong>HP:</strong> ${pokemon.stats[0].base_stat}</p>
+               <p><strong>Attack:</strong> ${pokemon.stats[1].base_stat}</p>
               <p><strong>Defense:</strong> ${pokemon.stats[2].base_stat}</p>
               <p><strong>Sp.Attack:</strong>${pokemon.stats[3].base_stat}</p>
               <p><strong>Sp.Defense:</strong>${pokemon.stats[4].base_stat}</p>
               <p><strong>Speed:</strong>${pokemon.stats[5].base_stat}</p>
-             
-
             </div>
         </div>
     </div>

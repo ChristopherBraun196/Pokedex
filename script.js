@@ -5,6 +5,8 @@ const BASE_IMG =
 const LIMIT = 20;
 const allPokemons = [];
 
+const closeDialog = document.getElementById("closeDialog");
+
 let offSet = 0;
 
 function init() {
@@ -55,3 +57,38 @@ function openPokemonDialog(pokemonId) {
 
   dialogRef.showModal();
 }
+
+function openOnEnter(event, pokemonId) {
+    if (event.key === "Enter") {
+   openPokemonDialog(pokemonId);
+  }
+}
+
+
+function closeDialog(event, ) {
+  if (event.target === dialogRef) {
+    closeBtn();
+    
+  }
+}
+
+
+
+
+// function nextBtn() {
+//   currentIndex++;
+//   if (currentIndex >= pictures.length) currentIndex = 0;
+//   renderImage();
+// }
+
+// function prevBtn() {
+//   currentIndex--;
+//   if (currentIndex < 0) currentIndex = pictures.length - 1;
+//   renderImage();
+// }
+
+
+// function searchBar(){
+//   const searchPokemon = document.getElementById("mySearch");   
+
+// }
