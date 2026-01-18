@@ -125,7 +125,7 @@ footer {
 
   justify-content: space-between;
   align-items: center;
- 
+
   padding-top: 10px;
   background-color: #006494;
   height: 60px;
@@ -177,34 +177,24 @@ footer {
 }
 
 @media (max-width: 750px) {
-
-  .HeaderBar { 
+  .HeaderBar {
     flex-direction: column;
     margin-top: 40px;
   }
-
-
 }
 
 @media (max-width: 360px) {
-
-  h1{
+  h1 {
     font-size: 35px;
   }
 
-  header{
+  header {
     height: 55px;
   }
   header img {
-    width:45px;   
+    width: 45px;
+  }
+  .SearchBar input {
+    width: 265px;
+  }
 }
-.SearchBar input {
-  width: 265px;
-}
-
-
-
-
-}
-
-
