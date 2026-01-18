@@ -23,7 +23,12 @@
         </div>
 
         <nav class="SearchBar" tabindex="0" aria-label="searchBar">
-          <input id="mySearch" type="text" placeholder="Search.." />
+          <input
+            id="search"
+            type="text"
+            placeholder="Search.."
+            onkeyup="searchPokemon()"
+          />
         </nav>
       </div>
     </header>

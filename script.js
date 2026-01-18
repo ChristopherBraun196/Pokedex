@@ -4,11 +4,13 @@ const BASE_IMG =
 
 const LIMIT = 20;
 const allPokemons = [];
+let pokemonNamesList = [];
 let offSet = 0;
 let currentPokemonId = null;
 
-function init() {
+async function init() {
   eventListener();
+  await preloadAllPokemonNames();
   loadPokemonData();
 }
 
@@ -54,11 +56,50 @@ async function loadMorePokemon() {
 
   await Promise.all([
     loadPokemonData(),
-    new Promise(resolve => setTimeout(resolve, 650))
+    new Promise((resolve) => setTimeout(resolve, 650)),
   ]);
 
   spinner.classList.add("hidden");
-  loadBtn.disabled = false;  
+  loadBtn.disabled = false;
+}
+
+async function preloadAllPokemonNames() {
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
+  const data = await response.json();
+  pokemonNamesList = data.results;
+}
+
+async function searchPokemon() {
+  const query = document.getElementById("search").value.toLowerCase();
+  const pokemonList = document.getElementById("loadPokemon");
+
+  if (query.length < 3) {
+    renderPokemonList(allPokemons, true);
+    return;
+  }
+  const matches = pokemonNamesList
+    .filter((p) => p.name.includes(query))
+    .slice(0, 10);
+
+  if (matches.length === 0) {
+    pokemonList.innerHTML = `<div class="no-found">No Pokémon found matching '${query}'.</div>`;
+    return;
+  }
+
+  pokemonList.innerHTML = "";
+
+  for (const match of matches) {
+    let pokemonData = allPokemons.find((p) => p.name === match.name);
+
+    if (!pokemonData) {
+      const res = await fetch(match.url);
+      const data = await res.json();
+      const artwork = data.sprites.other["official-artwork"].front_default;
+      pokemonData = { ...data, artwork };
+    }
+
+    pokemonList.innerHTML += PokedexCard(pokemonData);
+  }
 }
 
 function renderPokemonList(pokemons, clear = false) {
