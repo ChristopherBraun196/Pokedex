@@ -5,6 +5,11 @@ dialog {
 
 h3 {
   text-transform: capitalize;
+  font-size: 34px;
+}
+
+.PokeNumber {
+  font-size: 38px;
 }
 
 .bigCardContainer {
@@ -59,4 +64,52 @@ h3 {
   display: flex;
   padding: 18px;
   gap: 10px;
+}
+
+.pokemonStats {
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+}
+
+h4 {
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+  font-size: 26px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+.stat-label {
+  width: 80px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #666; 
+}
+
+.stat-value {
+  width: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.stat-bar-bg {
+  flex-grow: 1;
+  background-color: #f0efef;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background-color: #4dad5b;
+  transition: width 0.5s ease-in-out;
 }
