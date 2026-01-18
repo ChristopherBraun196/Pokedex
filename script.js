@@ -17,10 +17,10 @@ function eventListener() {
   document.addEventListener("keydown", switchKey);
 
   dialog.addEventListener("click", (event) => {
-  if (event.target === dialog) {
-    dialog.close();
-  }
-});
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
 }
 
 async function loadPokemonData() {
@@ -43,6 +43,24 @@ async function loadPokemonData() {
   renderPokemonList(newPokemons, offSet === 0);
 }
 
+async function loadMorePokemon() {
+  const spinner = document.getElementById("loading-spinner");
+  const loadBtn = document.getElementById("loadMoreBtn");
+
+  spinner.classList.remove("hidden");
+  loadBtn.disable = true;
+
+  offSet += LIMIT;
+
+  await Promise.all([
+    loadPokemonData(),
+    new Promise(resolve => setTimeout(resolve, 650))
+  ]);
+
+  spinner.classList.add("hidden");
+  loadBtn.disabled = false;  
+}
+
 function renderPokemonList(pokemons, clear = false) {
   const pokemonLists = document.getElementById("loadPokemon");
 
@@ -51,11 +69,6 @@ function renderPokemonList(pokemons, clear = false) {
   for (let i = 0; i < pokemons.length; i++) {
     pokemonLists.innerHTML += PokedexCard(pokemons[i]);
   }
-}
-
-function loadMorePokemon() {
-  offSet += LIMIT;
-  loadPokemonData();
 }
 
 function openPokemonDialog(pokemonId) {
