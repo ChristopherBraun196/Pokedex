@@ -113,3 +113,25 @@ h4 {
   background-color: #4dad5b;
   transition: width 0.5s ease-in-out;
 }
+
+@media (max-width: 500px) {
+
+  .bigPokemonImage {
+    width: 350px;
+}
+}
+
+
+
+@media (max-width: 390px) {
+  h3 {
+    font-size: 30px;
+  }
+  .PokeNumber {
+    font-size: 32px;
+  }
+
+  .bigPokemonImage {
+    width: 252px;
+}
+}
