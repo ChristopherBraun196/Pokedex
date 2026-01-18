@@ -1,10 +1,11 @@
 function PokedexCard(pokemon) {
   // console.log(pokemon.types[0].type.name);
   return `
-     <div onclick="openPokemonDialog(${pokemon.id})"class="pokeCards ${
-    pokemon.types[0].type.name
-  }"tabindex="0" role="button" aria-label="Open ${pokemon.name}"
-  onkeydown="openOnEnter(event, ${pokemon.id} )">
+     <button class="pokeCards ${pokemon.types[0].type.name}" 
+     tabindex="0"
+     onclick="openPokemonDialog(${pokemon.id})"      
+     aria-label="Open ${pokemon.name}">
+     
         <img src="${pokemon.artwork}"  alt="${pokemon.name}">        
         <p class="PositionNumber">#${pokemon.id}</p>
         <h2> ${pokemon.name}</h2>
@@ -18,7 +19,7 @@ function PokedexCard(pokemon) {
             : ""
         }  
         </div>     
-    </div>
+    </button>
     `;
 }
 
@@ -26,14 +27,16 @@ function BigPokedexCard(pokemon) {
   return `
     <div class="bigCardContainer">
         <div class="bigCardHeader ${pokemon.types[0].type.name}">
-            <button class="closeBtn" onclick="closeBtn()">X</button>
-            <div>
-             <p>#${pokemon.id}</p>
-              <h3>${pokemon.name}</h3>                
-            </div>
-            <img class="bigPokemonImage" src="${pokemon.artwork}" alt="${pokemon.name}">
+        <div class="NameNumber">
+         <p>#${pokemon.id}</p>
+              <h3>${pokemon.name}</h3>  
+              </div>
+            <button class="closeBtn" onclick="closeDialogClick() ">X</button>
+            <button class="prevBtn" onclick="lastPokemon(${pokemon.id})"><</button>
+            <button class="nextBtn" onclick="nextPokemon(${pokemon.id})">></button>
+            <img class="bigPokemonImage" src="${pokemon.artwork}" alt="${pokemon.name}">             
         </div>
-
+        
         <div class="bigCardBody">
             <div class="pokemonStats">
               <h4>Base Stats</h4>

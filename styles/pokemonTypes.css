@@ -20,7 +20,7 @@
 }
 
 .normal {
-  background: var(--type-normal);  
+  background: var(--type-normal);
 }
 .fire {
   background: var(--type-fire);
@@ -30,14 +30,12 @@
 }
 .electric {
   background: var(--type-electric);
-  /* color: #000; */
 }
 .grass {
   background: var(--type-grass);
 }
 .ice {
   background: var(--type-ice);
-  /* color: #000; */
 }
 .fighting {
   background: var(--type-fighting);
@@ -47,7 +45,6 @@
 }
 .ground {
   background: var(--type-ground);
-  /* color: #000; */
 }
 .flying {
   background: var(--type-flying);
@@ -72,14 +69,10 @@
 }
 .steel {
   background: var(--type-steel);
-  /* color: #000; */
 }
 .fairy {
   background: var(--type-fairy);
 }
-
-
-
 
 @keyframes shake {
   0% {
@@ -116,4 +109,3 @@
     transform: translate(1px, -2px) rotate(-1deg);
   }
 }
-

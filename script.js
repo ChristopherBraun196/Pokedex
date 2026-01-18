@@ -4,11 +4,23 @@ const BASE_IMG =
 
 const LIMIT = 20;
 const allPokemons = [];
-
 let offSet = 0;
+let currentPokemonId = null;
 
 function init() {
+  eventListener();
   loadPokemonData();
+}
+
+function eventListener() {
+  const dialog = document.getElementById("openPokemonDialog");
+  document.addEventListener("keydown", switchKey);
+
+  dialog.addEventListener("click", (event) => {
+  if (event.target === dialog) {
+    dialog.close();
+  }
+});
 }
 
 async function loadPokemonData() {
@@ -48,37 +60,47 @@ function loadMorePokemon() {
 
 function openPokemonDialog(pokemonId) {
   const dialogRef = document.getElementById("openPokemonDialog");
-
   const pokemon = allPokemons.find((p) => p.id === pokemonId);
 
-  dialogRef.innerHTML = BigPokedexCard(pokemon);
+  currentPokemonId = pokemonId;
 
+  dialogRef.innerHTML = BigPokedexCard(pokemon);
   dialogRef.showModal();
 }
 
-function openOnEnter(event, pokemonId) {
-  if (event.key === "Enter") {
-    openPokemonDialog(pokemonId);
+function closeDialogClick() {
+  document.getElementById("openPokemonDialog").close();
+}
+
+function nextPokemon(currentId) {
+  const index = allPokemons.findIndex((p) => p.id === currentId);
+  let nextIndex = index + 1;
+
+  if (nextIndex >= allPokemons.length) {
+    nextIndex = 0;
+  }
+
+  const nextId = allPokemons[nextIndex].id;
+  openPokemonDialog(nextId);
+}
+
+function lastPokemon(currentId) {
+  const index = allPokemons.findIndex((p) => p.id === currentId);
+  let prevIndex = index - 1;
+
+  if (prevIndex < 0) {
+    prevIndex = allPokemons.length - 1;
+  }
+
+  const prevId = allPokemons[prevIndex].id;
+  openPokemonDialog(prevId);
+}
+
+function switchKey(event) {
+  if (event.key === "ArrowLeft") {
+    lastPokemon(currentPokemonId);
+  }
+  if (event.key === "ArrowRight") {
+    nextPokemon(currentPokemonId);
   }
 }
-
-function closeBtn() {
-  const dialog = document.getElementById("openPokemonDialog");
-  dialog.close(); 
-}
-// function nextBtn() {
-//   currentIndex++;
-//   if (currentIndex >= pictures.length) currentIndex = 0;
-//   renderImage();
-// }
-
-// function prevBtn() {
-//   currentIndex--;
-//   if (currentIndex < 0) currentIndex = pictures.length - 1;
-//   renderImage();
-// }
-
-// function searchBar(){
-//   const searchPokemon = document.getElementById("mySearch");
-
-// }

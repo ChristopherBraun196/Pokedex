@@ -6,6 +6,12 @@
   scroll-behavior: smooth;
 }
 
+body:has(.example-dialog[open]) {
+  /* Poof! No more scrolling! */
+  overflow: hidden;
+}
+
+
 @font-face {
   font-family: "Lugarismo";
   src: url(./font/Lugrasimo/Lugrasimo-Regular.ttf);
@@ -107,9 +113,14 @@ main {
   cursor: pointer;
 }
 
+.NoPush{
+  pointer-events: disabled
+}
+
 .dialogPosition{
   margin: auto;
 }
+
 
 footer {
   display: flex;
