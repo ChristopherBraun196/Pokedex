@@ -9,6 +9,7 @@
 body:has(.example-dialog[open]) {
   /* Poof! No more scrolling! */
   overflow: hidden;
+  
 }
 
 @font-face {
@@ -129,12 +130,14 @@ footer {
   padding-top: 10px;
   background-color: #006494;
   height: 60px;
-  margin-top: 268px;
+  margin-top: auto;
 }
+
+
 
 .FooterLinks {
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 180px;
 }
 
 .spinner {

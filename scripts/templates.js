@@ -31,9 +31,9 @@ function BigPokedexCard(pokemon) {
          <p class="PokeNumber">#${pokemon.id}</p>
               <h3>${pokemon.name}</h3>  
               </div>
-            <button class="closeBtn" onclick="closeDialogClick() ">X</button>
-            <button class="prevBtn" onclick="lastPokemon(${pokemon.id})"><</button>
-            <button class="nextBtn" onclick="nextPokemon(${pokemon.id})">></button>
+            <button class="closeBtn" onclick="closeDialogClick() ">&#10761;</button>
+            <button class="prevBtn" onclick="lastPokemon(${pokemon.id})">&#8592;</button>
+            <button class="nextBtn" onclick="nextPokemon(${pokemon.id})">&#8594;</button>
             <img class="bigPokemonImage" src="${pokemon.artwork}" alt="${pokemon.name}">             
         </div>
         

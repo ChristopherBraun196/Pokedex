@@ -30,34 +30,50 @@ h3 {
 
 .closeBtn {
   top: 10px;
-  right: 15px;
+  right: 10px;
   border: none;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.3);
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 
 .prevBtn {
-  top: 50%;
+  top: 90%;
   left: 10px;
   transform: translateY(-50%);
   border: none;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.3);
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 
 .nextBtn {
-  top: 50%;
+  top: 90%;
   right: 10px;
   transform: translateY(-50%);
   border: none;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.3);
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.closeBtn:hover,
+.prevBtn:hover,
+.nextBtn:hover {
+  border-color: black;
+  transform: scale3d(1.8);
 }
 
 .NameNumber {
@@ -116,19 +132,19 @@ h4 {
 
 @media (max-width: 500px) {
   .bigPokemonImage {
-    width: 350px;
+    width: 365px;
+    height: 320px;
   }
 }
 
 @media (max-width: 390px) {
   h3 {
-    font-size: 30px;
+    font-size: 24px;
   }
   .PokeNumber {
     font-size: 32px;
   }
-
-  .bigPokemonImage {
-    width: 252px;
+  h4 {
+    font-size: 25px;
   }
 }
