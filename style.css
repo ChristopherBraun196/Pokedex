@@ -6,10 +6,19 @@
   scroll-behavior: smooth;
 }
 
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+}
+
 body:has(.example-dialog[open]) {
   /* Poof! No more scrolling! */
   overflow: hidden;
-  
 }
 
 @font-face {
@@ -26,6 +35,9 @@ h1 {
 body {
   margin: 0;
   background-color: #0177a9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
@@ -78,6 +90,20 @@ header img {
   padding-left: 12px;
 }
 
+.resetBtn {
+  height: 50px;
+  width: 150px;
+  margin-top: 18px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(66, 95, 224, 0.452);
+  border-radius: 28px;
+  border-style: groove;
+  border-bottom: white;
+  background-color: #006494;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
 main {
   margin-bottom: 15px;
   max-width: 1440px;
@@ -105,6 +131,10 @@ main {
   border-bottom: white;
   background-color: #006494;
   font-size: 14px;
+  margin-bottom: 24px;
+}
+.hidden {
+  display: none;
 }
 
 .moreButton button:hover {
@@ -123,21 +153,19 @@ main {
 
 footer {
   display: flex;
-
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-
-  padding-top: 10px;
+  gap: 6px;
+  padding: 0 40px;
   background-color: #006494;
   height: 60px;
-  margin-top: auto;
+  color: white;
+  width: 100%;
 }
 
-
-
 .FooterLinks {
-  max-width: 1440px;
-  margin: 180px;
+  display: flex;
+  align-items: center;
 }
 
 .spinner {
@@ -184,9 +212,13 @@ footer {
     flex-direction: column;
     margin-top: 40px;
   }
+  footer {
+    font-size: 18px;
+    flex-direction: column;
+  }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 385px) {
   h1 {
     font-size: 35px;
   }
@@ -199,5 +231,9 @@ footer {
   }
   .SearchBar input {
     width: 265px;
+  }
+  footer {
+    font-size: 14px;
+    flex-direction: column;
   }
 }

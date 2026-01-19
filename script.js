@@ -48,12 +48,9 @@ async function loadPokemonData() {
 async function loadMorePokemon() {
   const spinner = document.getElementById("loading-spinner");
   const loadBtn = document.getElementById("loadMoreBtn");
-
   spinner.classList.remove("hidden");
   loadBtn.disable = true;
-
   offSet += LIMIT;
-
   await Promise.all([
     loadPokemonData(),
     new Promise((resolve) => setTimeout(resolve, 650)),
@@ -70,36 +67,69 @@ async function preloadAllPokemonNames() {
 }
 
 async function searchPokemon() {
-  const query = document.getElementById("search").value.toLowerCase();
-  const pokemonList = document.getElementById("loadPokemon");
+  const query = searchQuery();
+  const list = getPokemonListElement();
+  const btn = document.getElementById("loadMoreBtn");
+  const resetBtn = document.getElementById("resetSearchBtn");
 
-  if (query.length < 3) {
-    renderPokemonList(allPokemons, true);
-    return;
-  }
-  const matches = pokemonNamesList
-    .filter((p) => p.name.includes(query))
-    .slice(0, 10);
+  btn.classList.toggle("hidden", query.length >= 3);
+  resetBtn.classList.toggle("hidden", query.length < 3);
 
-  if (matches.length === 0) {
-    pokemonList.innerHTML = `<div class="no-found">No Pokémon found matching '${query}'.</div>`;
-    return;
-  }
+  if (query.length < 3) return renderPokemonList(allPokemons, true);
 
-  pokemonList.innerHTML = "";
+  const matches = findMatches(query);
+  if (!matches.length) return renderNoResults(query, list);
 
+  list.innerHTML = "";
+  await renderMatches(matches, list);
+}
+
+function resetSearch() {
+  document.getElementById("search").value = "";
+  document.getElementById("resetSearchBtn").classList.add("hidden");
+  document.getElementById("loadMoreBtn").classList.remove("hidden");
+  renderPokemonList(allPokemons, true);
+}
+
+function searchQuery() {
+  return document.getElementById("search").value.toLowerCase();
+}
+
+function getPokemonListElement() {
+  return document.getElementById("loadPokemon");
+}
+
+function findMatches(query) {
+  return allPokemons.filter((p) => p.name.includes(query)).slice(0, 10);
+}
+
+function renderNoResults(query, list) {
+  list.innerHTML = `<div class="no-found">No Pokémon found matching '${query}'.</div>`;
+}
+
+async function renderMatches(matches, list) {
   for (const match of matches) {
-    let pokemonData = allPokemons.find((p) => p.name === match.name);
-
-    if (!pokemonData) {
-      const res = await fetch(match.url);
-      const data = await res.json();
-      const artwork = data.sprites.other["official-artwork"].front_default;
-      pokemonData = { ...data, artwork };
-    }
-
-    pokemonList.innerHTML += PokedexCard(pokemonData);
+    const pokemon = await getPokemonData(match);
+    list.innerHTML += PokedexCard(pokemon);
   }
+}
+
+async function getPokemonData(match) {
+  let pokemon = allPokemons.find((p) => p.name === match.name);
+  if (pokemon) return pokemon;
+
+  pokemon = await fetchPokemon(match.url);
+  allPokemons.push(pokemon);
+  return pokemon;
+}
+
+async function fetchPokemon(url) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return {
+    ...data,
+    artwork: data.sprites.other["official-artwork"].front_default,
+  };
 }
 
 function renderPokemonList(pokemons, clear = false) {
@@ -114,7 +144,7 @@ function renderPokemonList(pokemons, clear = false) {
 
 function openPokemonDialog(pokemonId) {
   const dialogRef = document.getElementById("openPokemonDialog");
-  const pokemon = allPokemons.find((p) => p.id === pokemonId);
+  const pokemon = allPokemons.find((p) => p.id == pokemonId);
 
   currentPokemonId = pokemonId;
 
