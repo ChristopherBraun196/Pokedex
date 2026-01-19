@@ -21,9 +21,7 @@
           </a>
           <h1>Pokédex</h1>
         </div>
-       
-
-        <nav class="SearchBar" tabindex="0" aria-label="searchBar">           
+        <nav class="SearchBar" tabindex="0" aria-label="searchBar">
           <input
             id="search"
             type="text"
@@ -34,17 +32,18 @@
       </div>
     </header>
     <main>
-    
       <div class="OverlayContainer" id="loadPokemon"></div>
       <div class="moreButton">
         <div id="loading-spinner" class="hidden">
           <div class="spinner"></div>
         </div>
-
-          <button id="resetSearchBtn" class="hidden resetBtn" onclick="resetSearch()">
+        <button
+          id="resetSearchBtn"
+          class="hidden resetBtn"
+          onclick="resetSearch()"
+        >
           Reset
         </button>
-
         <button
           id="loadMoreBtn"
           class="NoPush loadMoreBtn"
