@@ -1,4 +1,11 @@
-import { searchPokemon, resetSearch } from "../features/search.js";
+import { renderPokemonList } from "../components/pokemonCard.js";
+
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
+
+const LIMIT = 20;
+export const allPokemons = [];
+let pokemonNamesList = [];
+let offSet = 0;
 
 export async function loadPokemonData() {
   const response = await fetch(`${BASE_URL}?limit=${LIMIT}&offset=${offSet}`);

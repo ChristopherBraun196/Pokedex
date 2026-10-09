@@ -1,3 +1,6 @@
+import { allPokemons } from "../data/data.js";
+import { renderPokemonList, PokedexCard } from "../components/pokemonCard.js";
+
 export async function searchPokemon() {
   const query = searchQuery();
   const list = getPokemonListElement();

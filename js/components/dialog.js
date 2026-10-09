@@ -1,3 +1,5 @@
+import { allPokemons } from "../data/data.js";
+
 let currentPokemonId = null;
 
 export function initDialog() {
@@ -23,7 +25,7 @@ export function initDialog() {
   });
 }
 
-function openPokemonDialog(pokemonId) {
+export function openPokemonDialog(pokemonId) {
   const dialogRef = document.getElementById("openPokemonDialog");
   const pokemon = allPokemons.find((p) => p.id == pokemonId);
 
@@ -68,4 +70,40 @@ function switchKey(event) {
   if (event.key === "ArrowRight") {
     nextPokemon(currentPokemonId);
   }
+}
+
+function BigPokedexCard(pokemon) {
+  return `
+    <div class="bigCardContainer">
+        <div class="bigCardHeader ${pokemon.types[0].type.name}">
+        <div class="NameNumber">
+         <p class="PokeNumber">#${pokemon.id}</p>
+              <h3>${pokemon.name}</h3>  
+              </div>
+            <button class="closeBtn">&#10761;</button>
+            <button class="prevBtn">&#8592;</button>
+            <button class="nextBtn">&#8594;</button>
+            <img class="bigPokemonImage" src="${pokemon.artwork}" alt="${pokemon.name}">             
+        </div>
+        
+        <div class="bigCardBody">
+            <div class="pokemonStats">
+  <h4>Base Stats</h4>
+  ${pokemon.stats
+    .map(
+      (stat) => `
+    <div class="stat-row">
+      <span class="stat-label">${stat.stat.name.toUpperCase()}</span>
+      <span class="stat-value">${stat.base_stat}</span>
+      <div class="stat-bar-bg">
+        <div class="stat-bar-fill" style="width: ${(stat.base_stat / 150) * 100}%"></div>
+      </div>
+    </div>
+  `,
+    )
+    .join("")}
+</div>
+        </div>
+    </div>
+  `;
 }
