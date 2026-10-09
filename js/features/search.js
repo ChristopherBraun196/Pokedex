@@ -1,4 +1,4 @@
-import { allPokemons } from "../data/data.js";
+import { allPokemons, pokemonNamesList, loadOnePokemon } from "../data/data.js";
 import { renderPokemonList, PokedexCard } from "../components/pokemonCard.js";
 
 export async function searchPokemon() {
@@ -35,7 +35,7 @@ function getPokemonListElement() {
 }
 
 function findMatches(query) {
-  return allPokemons.filter((p) => p.name.includes(query)).slice(0, 10);
+  return pokemonNamesList.filter((p) => p.name.includes(query)).slice(0, 10);
 }
 
 function renderNoResults(query, list) {
@@ -43,7 +43,10 @@ function renderNoResults(query, list) {
 }
 
 async function renderMatches(matches, list) {
-  for (const match of matches) {
-    list.innerHTML += PokedexCard(match);
+  const promises = matches.map((match) => loadOnePokemon(match.url));
+  const pokemons = await Promise.all(promises);
+
+  for (const pokemon of pokemons) {
+    list.innerHTML += PokedexCard(pokemon);
   }
 }

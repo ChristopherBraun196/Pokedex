@@ -4,7 +4,7 @@ const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
 const LIMIT = 20;
 export const allPokemons = [];
-let pokemonNamesList = [];
+export let pokemonNamesList = [];
 let offSet = 0;
 
 export async function loadPokemonData() {
@@ -18,7 +18,7 @@ export async function loadPokemonData() {
   renderPokemonList(newPokemons, offSet === 0);
 }
 
-async function loadOnePokemon(url) {
+export async function loadOnePokemon(url) {
   const response = await fetch(url);
   const fullData = await response.json();
   const artwork = fullData.sprites.other["official-artwork"].front_default;
