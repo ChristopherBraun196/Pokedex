@@ -10,21 +10,20 @@ let offSet = 0;
 export async function loadPokemonData() {
   const response = await fetch(`${BASE_URL}?limit=${LIMIT}&offset=${offSet}`);
   const data = await response.json();
+  const promises = data.results.map((pokemon) => loadOnePokemon(pokemon.url));
 
-  const newPokemons = [];
-
-  for (const pokemon of data.results) {
-    const res = await fetch(pokemon.url);
-    const fullData = await res.json();
-    const artwork = fullData.sprites.other["official-artwork"].front_default;
-
-    const pokemonObj = { ...fullData, artwork };
-
-    allPokemons.push(pokemonObj); // Speicher
-    newPokemons.push(pokemonObj); // Neu Rendern
-  }
+  const newPokemons = await Promise.all(promises);
+  allPokemons.push(...newPokemons);
 
   renderPokemonList(newPokemons, offSet === 0);
+}
+
+async function loadOnePokemon(url) {
+  const response = await fetch(url);
+  const fullData = await response.json();
+  const artwork = fullData.sprites.other["official-artwork"].front_default;
+
+  return { ...fullData, artwork };
 }
 
 export async function loadMorePokemon() {
