@@ -1,3 +1,5 @@
+import { searchPokemon, resetSearch } from "../features/search.js";
+
 export async function loadPokemonData() {
   const response = await fetch(`${BASE_URL}?limit=${LIMIT}&offset=${offSet}`);
   const data = await response.json();
@@ -37,22 +39,4 @@ export async function preloadAllPokemonNames() {
   const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
   const data = await response.json();
   pokemonNamesList = data.results;
-}
-
-export async function getPokemonData(match) {
-  let pokemon = allPokemons.find((p) => p.name === match.name);
-  if (pokemon) return pokemon;
-
-  pokemon = await fetchPokemon(match.url);
-  allPokemons.push(pokemon);
-  return pokemon;
-}
-
-async function fetchPokemon(url) {
-  const res = await fetch(url);
-  const data = await res.json();
-  return {
-    ...data,
-    artwork: data.sprites.other["official-artwork"].front_default,
-  };
 }
