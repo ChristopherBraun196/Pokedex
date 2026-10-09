@@ -3,7 +3,8 @@ function PokedexCard(pokemon) {
   return `
      <button class="pokeCards ${pokemon.types[0].type.name}" 
      tabindex="0"
-     onclick="openPokemonDialog(${pokemon.id})"      
+      data-pokemon-id="${pokemon.id}"
+
      aria-label="Open ${pokemon.name}">
      
         <img src="${pokemon.artwork}"  alt="${pokemon.name}">        

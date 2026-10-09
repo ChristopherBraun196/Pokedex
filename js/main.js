@@ -4,9 +4,10 @@ import {
   loadMorePokemon,
 } from "./data/data.js";
 import { searchPokemon, resetSearch } from "./features/search.js";
+import { initDialog } from "./components/dialog.js";
 
 async function init() {
-  eventListener();
+  initDialog();
   await preloadAllPokemonNames();
   loadPokemonData();
 
