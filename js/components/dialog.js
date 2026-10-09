@@ -8,6 +8,10 @@ export function initDialog() {
     if (event.target === dialog) {
       dialog.close();
     }
+    if (event.target.closest(".closeBtn")) closeDialogClick();
+
+    if (event.target.closest(".prevBtn")) lastPokemon(currentPokemonId);
+    if (event.target.closest(".nextBtn")) nextPokemon(currentPokemonId);
   });
 
   const list = document.querySelector("#loadPokemon");
@@ -30,7 +34,7 @@ function openPokemonDialog(pokemonId) {
 }
 
 function closeDialogClick() {
-  document.getElementById("openPokemonDialog").close();
+  document.querySelector("#openPokemonDialog").close();
 }
 
 function nextPokemon(currentId) {
