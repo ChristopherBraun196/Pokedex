@@ -1,4 +1,4 @@
-import { allPokemons, getPokemonById } from "../data/data.js";
+import { getPokemonById } from "../data/data.js";
 
 const dialog = document.querySelector("#openPokemonDialog");
 const pokemonList = document.querySelector("#loadPokemon");
@@ -11,20 +11,17 @@ export function initDialog() {
   pokemonList.addEventListener("click", handleCardClick);
 }
 
+function handleArrowKeys(event) {
+  if (!dialog.open) return;
+  if (event.key === "ArrowLeft") showNeighbor(-1);
+  if (event.key === "ArrowRight") showNeighbor(1);
+}
+
 function handleDialogClick(event) {
   if (event.target === dialog) dialog.close();
   if (event.target.closest(".closeBtn")) closeDialog();
-  if (event.target.closest(".prevBtn")) previousPokemon(currentPokemonId);
-  if (event.target.closest(".nextBtn")) nextPokemon(currentPokemonId);
-}
-
-function handleArrowKeys(event) {
-  if (event.key === "ArrowLeft") {
-    previousPokemon(currentPokemonId);
-  }
-  if (event.key === "ArrowRight") {
-    nextPokemon(currentPokemonId);
-  }
+  if (event.target.closest(".prevBtn")) showNeighbor(-1);
+  if (event.target.closest(".nextBtn")) showNeighbor(1);
 }
 
 function handleCardClick(event) {
@@ -46,28 +43,20 @@ function closeDialog() {
   dialog.close();
 }
 
-function nextPokemon(currentId) {
-  const index = allPokemons.findIndex((p) => p.id === currentId);
-  let nextIndex = index + 1;
-
-  if (nextIndex >= allPokemons.length) {
-    nextIndex = 0;
-  }
-
-  const nextId = allPokemons[nextIndex].id;
-  openPokemonDialog(nextId);
+function getShownPokemonIds() {
+  const cards = pokemonList.querySelectorAll(".pokeCards");
+  return [...cards].map((card) => Number(card.dataset.pokemonId));
 }
 
-function previousPokemon(currentId) {
-  const index = allPokemons.findIndex((p) => p.id === currentId);
-  let prevIndex = index - 1;
+function showNeighbor(step) {
+  const ids = getShownPokemonIds();
+  const index = ids.indexOf(currentPokemonId);
+  let newIndex = index + step;
 
-  if (prevIndex < 0) {
-    prevIndex = allPokemons.length - 1;
-  }
+  if (newIndex >= ids.length) newIndex = 0;
+  if (newIndex < 0) newIndex = ids.length - 1;
 
-  const prevId = allPokemons[prevIndex].id;
-  openPokemonDialog(prevId);
+  openPokemonDialog(ids[newIndex]);
 }
 
 function createDialogHtml(pokemon) {
