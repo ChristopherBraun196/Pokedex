@@ -1,4 +1,4 @@
-import { allPokemons } from "../data/data.js";
+import { allPokemons, getPokemonById } from "../data/data.js";
 
 let currentPokemonId = null;
 
@@ -27,7 +27,8 @@ export function initDialog() {
 
 export function openPokemonDialog(pokemonId) {
   const dialogRef = document.getElementById("openPokemonDialog");
-  const pokemon = allPokemons.find((p) => p.id == pokemonId);
+
+  const pokemon = getPokemonById(pokemonId);
 
   currentPokemonId = pokemonId;
 

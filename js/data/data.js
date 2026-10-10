@@ -36,6 +36,10 @@ export async function loadOnePokemon(pokemonUrl) {
   return pokemon;
 }
 
+export function getPokemonById(pokemonId) {
+  return Object.values(pokemonCache).find((p) => p.id === pokemonId);
+}
+
 export async function loadMorePokemon() {
   const spinner = document.getElementById("loading-spinner");
   const loadBtn = document.getElementById("loadMoreBtn");
