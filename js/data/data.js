@@ -1,17 +1,37 @@
 import { renderPokemonList } from "../components/pokemonCard.js";
 
-const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
-
-const pokemonCache = {};
-
-const LIMIT = 20;
 export const allPokemons = [];
 export let pokemonNamesList = [];
-let offSet = 0;
 
-export async function loadPokemonData() {
+const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
+const POKEMONS_PER_PAGE = 20;
+
+const pokemonCache = {};
+const loadMoreBtn = document.querySelector("#loadMoreBtn");
+const loadingSpinner = document.querySelector("#loading-spinner");
+
+let offset = 0;
+
+export function initData() {
+  loadPokemonNames();
+  loadNextPokemons();
+
+  initLoadMoreButton();
+}
+
+function initLoadMoreButton() {
+  loadMoreBtn.addEventListener("click", handleLoadMoreClick);
+}
+
+async function loadPokemonNames() {
+  const response = await fetch(`${POKEMON_API_URL}?limit=151`);
+  const data = await response.json();
+  pokemonNamesList = data.results;
+}
+
+async function loadNextPokemons() {
   const response = await fetch(
-    `${POKEMON_API_URL}?limit=${LIMIT}&offset=${offSet}`,
+    `${POKEMON_API_URL}?limit=${POKEMONS_PER_PAGE}&offset=${offset}`,
   );
   const data = await response.json();
   const promises = data.results.map((pokemon) => loadOnePokemon(pokemon.url));
@@ -19,7 +39,20 @@ export async function loadPokemonData() {
   const newPokemons = await Promise.all(promises);
   allPokemons.push(...newPokemons);
 
-  renderPokemonList(newPokemons, offSet === 0);
+  renderPokemonList(newPokemons, offset === 0);
+}
+
+async function handleLoadMoreClick() {
+  loadingSpinner.classList.remove("hidden");
+  loadMoreBtn.disabled = true;
+  offset += POKEMONS_PER_PAGE;
+  await Promise.all([
+    loadNextPokemons(),
+    new Promise((resolve) => setTimeout(resolve, 650)),
+  ]);
+
+  loadingSpinner.classList.add("hidden");
+  loadMoreBtn.disabled = false;
 }
 
 export async function loadOnePokemon(pokemonUrl) {
@@ -38,25 +71,4 @@ export async function loadOnePokemon(pokemonUrl) {
 
 export function getPokemonById(pokemonId) {
   return Object.values(pokemonCache).find((p) => p.id === pokemonId);
-}
-
-export async function loadMorePokemon() {
-  const spinner = document.getElementById("loading-spinner");
-  const loadBtn = document.getElementById("loadMoreBtn");
-  spinner.classList.remove("hidden");
-  loadBtn.disable = true;
-  offSet += LIMIT;
-  await Promise.all([
-    loadPokemonData(),
-    new Promise((resolve) => setTimeout(resolve, 650)),
-  ]);
-
-  spinner.classList.add("hidden");
-  loadBtn.disabled = false;
-}
-
-export async function preloadAllPokemonNames() {
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
-  const data = await response.json();
-  pokemonNamesList = data.results;
 }

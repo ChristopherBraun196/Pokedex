@@ -1,41 +1,47 @@
 import { allPokemons, pokemonNamesList, loadOnePokemon } from "../data/data.js";
-import { renderPokemonList, PokedexCard } from "../components/pokemonCard.js";
+import {
+  renderPokemonList,
+  createCardHtml,
+} from "../components/pokemonCard.js";
 
-export async function searchPokemon() {
-  const query = searchQuery();
-  const list = getPokemonListElement();
-  const btn = document.getElementById("loadMoreBtn");
-  const resetBtn = document.getElementById("resetSearchBtn");
+const searchInput = document.querySelector("#search");
+const searchBtn = document.querySelector('[data-id="search-button"]');
+const resetSearchBtn = document.querySelector("#resetSearchBtn");
+const loadMoreBtn = document.querySelector("#loadMoreBtn");
+const pokemonList = document.querySelector("#loadPokemon");
 
-  const searchBtn = document.querySelector('[data-id="search-button"]');
-  searchBtn.disabled = query.length < 3;
+export function initSearch() {
+  searchInput.addEventListener("keyup", searchPokemon);
+  searchBtn.addEventListener("click", searchPokemon);
+  resetSearchBtn.addEventListener("click", resetSearch);
+}
 
-  btn.classList.toggle("hidden", query.length >= 3);
-  resetBtn.classList.toggle("hidden", query.length < 3);
+async function searchPokemon() {
+  const query = searchInput.value.toLowerCase();
+
+  updateSearchButtons(query);
 
   if (query.length < 3) return renderPokemonList(allPokemons, true);
 
   const matches = findMatches(query);
-  if (!matches.length) return renderNoResults(query, list);
+  if (!matches.length) return renderNoResults(query, pokemonList);
 
-  list.innerHTML = "";
-  await renderMatches(matches, list);
+  pokemonList.innerHTML = "";
+  await renderMatches(matches, pokemonList);
 }
 
-export function resetSearch() {
-  document.getElementById("search").value = "";
-  document.getElementById("resetSearchBtn").classList.add("hidden");
-  document.getElementById("loadMoreBtn").classList.remove("hidden");
+function updateSearchButtons(query) {
+  searchBtn.disabled = query.length < 3;
+  loadMoreBtn.classList.toggle("hidden", query.length >= 3);
+  resetSearchBtn.classList.toggle("hidden", query.length < 3);
+}
+
+function resetSearch() {
+  searchInput.value = "";
+  resetSearchBtn.classList.add("hidden");
+  loadMoreBtn.classList.remove("hidden");
   renderPokemonList(allPokemons, true);
-  document.querySelector('[data-id="search-button"]').disabled = true;
-}
-
-function searchQuery() {
-  return document.getElementById("search").value.toLowerCase();
-}
-
-function getPokemonListElement() {
-  return document.getElementById("loadPokemon");
+  searchBtn.disabled = true;
 }
 
 function findMatches(query) {
@@ -51,6 +57,6 @@ async function renderMatches(matches, list) {
   const pokemons = await Promise.all(promises);
 
   for (const pokemon of pokemons) {
-    list.innerHTML += PokedexCard(pokemon);
+    list.innerHTML += createCardHtml(pokemon);
   }
 }

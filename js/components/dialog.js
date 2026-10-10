@@ -1,43 +1,49 @@
 import { allPokemons, getPokemonById } from "../data/data.js";
 
+const dialog = document.querySelector("#openPokemonDialog");
+const pokemonList = document.querySelector("#loadPokemon");
+
 let currentPokemonId = null;
 
 export function initDialog() {
-  const dialog = document.getElementById("openPokemonDialog");
-  document.addEventListener("keydown", switchKey);
-
-  dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) {
-      dialog.close();
-    }
-    if (event.target.closest(".closeBtn")) closeDialogClick();
-
-    if (event.target.closest(".prevBtn")) lastPokemon(currentPokemonId);
-    if (event.target.closest(".nextBtn")) nextPokemon(currentPokemonId);
-  });
-
-  const list = document.querySelector("#loadPokemon");
-
-  list.addEventListener("click", (event) => {
-    const card = event.target.closest(".pokeCards");
-    if (!card) return;
-    openPokemonDialog(Number(card.dataset.pokemonId));
-  });
+  document.addEventListener("keydown", handleArrowKeys);
+  dialog.addEventListener("click", handleDialogClick);
+  pokemonList.addEventListener("click", handleCardClick);
 }
 
-export function openPokemonDialog(pokemonId) {
-  const dialogRef = document.getElementById("openPokemonDialog");
+function handleDialogClick(event) {
+  if (event.target === dialog) dialog.close();
+  if (event.target.closest(".closeBtn")) closeDialog();
+  if (event.target.closest(".prevBtn")) previousPokemon(currentPokemonId);
+  if (event.target.closest(".nextBtn")) nextPokemon(currentPokemonId);
+}
 
+function handleArrowKeys(event) {
+  if (event.key === "ArrowLeft") {
+    previousPokemon(currentPokemonId);
+  }
+  if (event.key === "ArrowRight") {
+    nextPokemon(currentPokemonId);
+  }
+}
+
+function handleCardClick(event) {
+  const card = event.target.closest(".pokeCards");
+  if (!card) return;
+  openPokemonDialog(Number(card.dataset.pokemonId));
+}
+
+function openPokemonDialog(pokemonId) {
   const pokemon = getPokemonById(pokemonId);
 
   currentPokemonId = pokemonId;
 
-  dialogRef.innerHTML = BigPokedexCard(pokemon);
-  dialogRef.showModal();
+  dialog.innerHTML = createDialogHtml(pokemon);
+  dialog.showModal();
 }
 
-function closeDialogClick() {
-  document.querySelector("#openPokemonDialog").close();
+function closeDialog() {
+  dialog.close();
 }
 
 function nextPokemon(currentId) {
@@ -52,7 +58,7 @@ function nextPokemon(currentId) {
   openPokemonDialog(nextId);
 }
 
-function lastPokemon(currentId) {
+function previousPokemon(currentId) {
   const index = allPokemons.findIndex((p) => p.id === currentId);
   let prevIndex = index - 1;
 
@@ -64,16 +70,7 @@ function lastPokemon(currentId) {
   openPokemonDialog(prevId);
 }
 
-function switchKey(event) {
-  if (event.key === "ArrowLeft") {
-    lastPokemon(currentPokemonId);
-  }
-  if (event.key === "ArrowRight") {
-    nextPokemon(currentPokemonId);
-  }
-}
-
-function BigPokedexCard(pokemon) {
+function createDialogHtml(pokemon) {
   return `
     <div class="bigCardContainer">
         <div class="bigCardHeader ${pokemon.types[0].type.name}">

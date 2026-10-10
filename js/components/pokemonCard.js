@@ -1,15 +1,14 @@
-export function renderPokemonList(pokemons, clear = false) {
-  const pokemonLists = document.getElementById("loadPokemon");
+const pokemonList = document.querySelector("#loadPokemon");
 
-  if (clear) pokemonLists.innerHTML = "";
+export function renderPokemonList(pokemons, clear = false) {
+  if (clear) pokemonList.innerHTML = "";
 
   for (let i = 0; i < pokemons.length; i++) {
-    pokemonLists.innerHTML += PokedexCard(pokemons[i]);
+    pokemonList.innerHTML += createCardHtml(pokemons[i]);
   }
 }
 
-export function PokedexCard(pokemon) {
-  // console.log(pokemon.types[0].type.name);
+export function createCardHtml(pokemon) {
   return `
      <button class="pokeCards ${pokemon.types[0].type.name}" 
      tabindex="0"
