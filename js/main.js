@@ -20,6 +20,10 @@ async function init() {
   document
     .querySelector("#resetSearchBtn")
     .addEventListener("click", resetSearch);
+
+  document
+    .querySelector('[data-id="search-button"]')
+    .addEventListener("click", searchPokemon);
 }
 
 init();

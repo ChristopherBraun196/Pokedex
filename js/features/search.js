@@ -7,6 +7,9 @@ export async function searchPokemon() {
   const btn = document.getElementById("loadMoreBtn");
   const resetBtn = document.getElementById("resetSearchBtn");
 
+  const searchBtn = document.querySelector('[data-id="search-button"]');
+  searchBtn.disabled = query.length < 3;
+
   btn.classList.toggle("hidden", query.length >= 3);
   resetBtn.classList.toggle("hidden", query.length < 3);
 
@@ -24,6 +27,7 @@ export function resetSearch() {
   document.getElementById("resetSearchBtn").classList.add("hidden");
   document.getElementById("loadMoreBtn").classList.remove("hidden");
   renderPokemonList(allPokemons, true);
+  document.querySelector('[data-id="search-button"]').disabled = true;
 }
 
 function searchQuery() {
