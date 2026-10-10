@@ -1,6 +1,8 @@
 import { renderPokemonList } from "../components/pokemonCard.js";
 
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
+const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
+
+const pokemonCache = {};
 
 const LIMIT = 20;
 export const allPokemons = [];
@@ -8,7 +10,9 @@ export let pokemonNamesList = [];
 let offSet = 0;
 
 export async function loadPokemonData() {
-  const response = await fetch(`${BASE_URL}?limit=${LIMIT}&offset=${offSet}`);
+  const response = await fetch(
+    `${POKEMON_API_URL}?limit=${LIMIT}&offset=${offSet}`,
+  );
   const data = await response.json();
   const promises = data.results.map((pokemon) => loadOnePokemon(pokemon.url));
 
@@ -18,12 +22,18 @@ export async function loadPokemonData() {
   renderPokemonList(newPokemons, offSet === 0);
 }
 
-export async function loadOnePokemon(url) {
-  const response = await fetch(url);
+export async function loadOnePokemon(pokemonUrl) {
+  if (pokemonCache[pokemonUrl]) {
+    return pokemonCache[pokemonUrl];
+  }
+
+  const response = await fetch(pokemonUrl);
   const fullData = await response.json();
   const artwork = fullData.sprites.other["official-artwork"].front_default;
 
-  return { ...fullData, artwork };
+  const pokemon = { ...fullData, artwork };
+  pokemonCache[pokemonUrl] = pokemon;
+  return pokemon;
 }
 
 export async function loadMorePokemon() {
