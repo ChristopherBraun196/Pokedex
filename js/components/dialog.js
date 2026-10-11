@@ -67,9 +67,10 @@ function createDialogHtml(pokemon) {
          <p class="PokeNumber">#${pokemon.id}</p>
               <h3>${pokemon.name}</h3>  
               </div>
-            <button data-id="close-dialog-button" class="closeBtn">&#10761;</button>
-            <button data-id="prev-button" class="prevBtn">&#8592;</button>
-            <button data-id="next-button" class="nextBtn">&#8594;</button>
+                <button data-id="close-dialog-button" class="closeBtn" aria-label="Close dialog">&#10761;</button>
+                <button data-id="prev-button" class="prevBtn" aria-label="Previous Pokémon">&#8592;</button>
+                <button data-id="next-button" class="nextBtn" aria-label="Next Pokémon">&#8594;</button>
+
             <img data-id="dialog-image" class="bigPokemonImage" src="${pokemon.artwork}" alt="${pokemon.name}">             
         </div>
         

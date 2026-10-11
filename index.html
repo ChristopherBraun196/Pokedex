@@ -42,9 +42,17 @@
         <p id="loadError" class="hidden">
           Could not load Pokémon. Please check your connection and try again.
         </p>
-        <button id="resetSearchBtn" class="hidden resetBtn">Reset</button>
+        <button
+          id="resetSearchBtn"
+          class="hidden resetBtn"
+          aria-label="Reset search"
+        >
+          Reset
+        </button>
+
         <button
           data-id="load-more-button"
+          aria-label="Load more Pokémon"
           id="loadMoreBtn"
           class="NoPush loadMoreBtn"
         >
@@ -55,6 +63,7 @@
 
     <dialog
       data-id="dialog"
+      aria-label="Pokémon details"
       class="dialogPosition example-dialog"
       id="openPokemonDialog"
     ></dialog>
