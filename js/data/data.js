@@ -99,3 +99,9 @@ export function loadPokemonById(pokemonId) {
 export function getPokemonById(pokemonId) {
   return Object.values(pokemonCache).find((p) => p.id === pokemonId);
 }
+
+export async function loadEvolutionChain(pokemon) {
+  const species = await fetchJson(pokemon.species.url);
+  const evolution = await fetchJson(species.evolution_chain.url);
+  return evolution.chain;
+}
