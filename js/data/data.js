@@ -33,16 +33,14 @@ function initLoadMoreButton() {
 }
 
 async function loadPokemonNames() {
-  const response = await fetch(`${POKEMON_API_URL}?limit=151`);
-  const data = await response.json();
+  const data = await fetchJson(`${POKEMON_API_URL}?limit=151`);
   pokemonNamesList = data.results;
 }
 
 async function loadNextPokemons() {
-  const response = await fetch(
+  const data = await fetchJson(
     `${POKEMON_API_URL}?limit=${POKEMONS_PER_PAGE}&offset=${offset}`,
   );
-  const data = await response.json();
   const promises = data.results.map((pokemon) => loadOnePokemon(pokemon.url));
 
   const newPokemons = await Promise.all(promises);
@@ -75,13 +73,18 @@ function wait(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
+async function fetchJson(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+  return response.json();
+}
+
 export async function loadOnePokemon(pokemonUrl) {
   if (pokemonCache[pokemonUrl]) {
     return pokemonCache[pokemonUrl];
   }
 
-  const response = await fetch(pokemonUrl);
-  const fullData = await response.json();
+  const fullData = await fetchJson(pokemonUrl);
   const artwork = fullData.sprites.other["official-artwork"].front_default;
 
   const pokemon = { ...fullData, artwork };
