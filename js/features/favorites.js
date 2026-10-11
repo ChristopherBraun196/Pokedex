@@ -1,10 +1,18 @@
+import { allPokemons, loadPokemonById } from "../data/data.js";
+import { renderPokemonList } from "../components/pokemonCard.js";
+
 const STORAGE_KEY = "favoritePokemonIds";
 const pokemonList = document.querySelector("#loadPokemon");
+const showAllBtn = document.querySelector("#showAllBtn");
+const showFavoritesBtn = document.querySelector("#showFavoritesBtn");
+const loadMoreBtn = document.querySelector("#loadMoreBtn");
 
 let favoriteIds = loadFavoriteIds();
 
 export function initFavorites() {
   pokemonList.addEventListener("click", handleFavoriteClick);
+  showAllBtn.addEventListener("click", showAll);
+  showFavoritesBtn.addEventListener("click", showFavorites);
 }
 
 function loadFavoriteIds() {
@@ -40,4 +48,17 @@ function handleFavoriteClick(event) {
 
 export function getHeartSymbol(pokemonId) {
   return isFavorite(pokemonId) ? "♥" : "♡";
+}
+
+async function showFavorites() {
+  loadMoreBtn.classList.add("hidden");
+  const promises = favoriteIds.map((id) => loadPokemonById(id));
+  const pokemons = await Promise.all(promises);
+
+  renderPokemonList(pokemons, true);
+}
+
+function showAll() {
+  renderPokemonList(allPokemons, true);
+  loadMoreBtn.classList.remove("hidden");
 }

@@ -92,6 +92,10 @@ export async function loadOnePokemon(pokemonUrl) {
   return pokemon;
 }
 
+export function loadPokemonById(pokemonId) {
+  return loadOnePokemon(`${POKEMON_API_URL}/${pokemonId}/`);
+}
+
 export function getPokemonById(pokemonId) {
   return Object.values(pokemonCache).find((p) => p.id === pokemonId);
 }
