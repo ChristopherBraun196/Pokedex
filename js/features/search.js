@@ -24,7 +24,7 @@ async function searchPokemon() {
   if (query.length < 3) return renderPokemonList(allPokemons, true);
 
   const matches = findMatches(query);
-  if (!matches.length) return renderNoResults(query, pokemonList);
+  if (!matches.length) return renderNoResults(query);
 
   pokemonList.innerHTML = "";
   await renderMatches(matches, pokemonList);
@@ -48,8 +48,12 @@ function findMatches(query) {
   return pokemonNamesList.filter((p) => p.name.includes(query)).slice(0, 10);
 }
 
-function renderNoResults(query, list) {
-  list.innerHTML = `<div class="no-found">No Pokémon found matching '${query}'.</div>`;
+function renderNoResults(query) {
+  const message = document.createElement("p");
+  message.className = "no-found";
+  message.dataset.id = "not-found";
+  message.textContent = `No Pokémon found matching '${query}'.`;
+  pokemonList.replaceChildren(message);
 }
 
 async function renderMatches(matches, list) {
