@@ -1,8 +1,5 @@
 import { allPokemons, pokemonNamesList, loadOnePokemon } from "../data/data.js";
-import {
-  renderPokemonList,
-  createCardHtml,
-} from "../components/pokemonCard.js";
+import { renderPokemonList } from "../components/pokemonCard.js";
 
 const searchInput = document.querySelector("#search");
 const searchBtn = document.querySelector('[data-id="search-button"]');
@@ -26,8 +23,7 @@ async function searchPokemon() {
   const matches = findMatches(query);
   if (!matches.length) return renderNoResults(query);
 
-  pokemonList.innerHTML = "";
-  await renderMatches(matches, pokemonList);
+  await renderMatches(matches);
 }
 
 function updateSearchButtons(query) {
@@ -56,11 +52,9 @@ function renderNoResults(query) {
   pokemonList.replaceChildren(message);
 }
 
-async function renderMatches(matches, list) {
+async function renderMatches(matches) {
   const promises = matches.map((match) => loadOnePokemon(match.url));
   const pokemons = await Promise.all(promises);
 
-  for (const pokemon of pokemons) {
-    list.innerHTML += createCardHtml(pokemon);
-  }
+  renderPokemonList(pokemons, true);
 }

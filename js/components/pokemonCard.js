@@ -3,12 +3,11 @@ const pokemonList = document.querySelector("#loadPokemon");
 export function renderPokemonList(pokemons, clear = false) {
   if (clear) pokemonList.innerHTML = "";
 
-  for (let i = 0; i < pokemons.length; i++) {
-    pokemonList.innerHTML += createCardHtml(pokemons[i]);
-  }
+  const cardsHtml = pokemons.map((pokemon) => createCardHtml(pokemon)).join("");
+  pokemonList.insertAdjacentHTML("beforeend", cardsHtml);
 }
 
-export function createCardHtml(pokemon) {
+function createCardHtml(pokemon) {
   return `
      <button class="pokeCards ${pokemon.types[0].type.name}" 
      tabindex="0"
