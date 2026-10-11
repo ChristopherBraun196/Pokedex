@@ -1,4 +1,4 @@
-import { getPokemonById } from "../data/data.js";
+import { getPokemonById, loadEvolutionChain } from "../data/data.js";
 
 const dialog = document.querySelector("#openPokemonDialog");
 const pokemonList = document.querySelector("#loadPokemon");
@@ -37,6 +37,16 @@ function openPokemonDialog(pokemonId) {
 
   dialog.innerHTML = createDialogHtml(pokemon);
   dialog.showModal();
+  renderEvolution(pokemon);
+}
+
+async function renderEvolution(pokemon) {
+  const evolutions = await loadEvolutionChain(pokemon);
+  const container = dialog.querySelector(".evolutionChain");
+
+  container.innerHTML = evolutions
+    .map((evolution) => createEvolutionHtml(evolution))
+    .join("");
 }
 
 function closeDialog() {
@@ -86,12 +96,24 @@ function createDialogHtml(pokemon) {
       <div class="stat-bar-bg">
         <div class="stat-bar-fill" style="width: ${(stat.base_stat / 150) * 100}%"></div>
       </div>
+
     </div>
   `,
     )
     .join("")}
 </div>
+      <h4>Evolution</h4>
+      <div class="evolutionChain"></div>
         </div>
+    </div>
+  `;
+}
+
+function createEvolutionHtml(pokemon) {
+  return `
+    <div class="evolutionStep">
+      <img src="${pokemon.artwork}" alt="${pokemon.name}" width="80">
+      <p>${pokemon.name}</p>
     </div>
   `;
 }
