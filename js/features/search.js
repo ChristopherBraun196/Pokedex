@@ -6,6 +6,7 @@ const searchBtn = document.querySelector('[data-id="search-button"]');
 const resetSearchBtn = document.querySelector("#resetSearchBtn");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
 const pokemonList = document.querySelector("#loadPokemon");
+const loadError = document.querySelector("#loadError");
 
 export function initSearch() {
   searchInput.addEventListener("keyup", searchPokemon);
@@ -15,6 +16,7 @@ export function initSearch() {
 
 async function searchPokemon() {
   const query = searchInput.value.toLowerCase();
+  loadError.classList.add("hidden");
 
   updateSearchButtons(query);
 
@@ -53,8 +55,12 @@ function renderNoResults(query) {
 }
 
 async function renderMatches(matches) {
-  const promises = matches.map((match) => loadOnePokemon(match.url));
-  const pokemons = await Promise.all(promises);
+  try {
+    const promises = matches.map((match) => loadOnePokemon(match.url));
+    const pokemons = await Promise.all(promises);
 
-  renderPokemonList(pokemons, true);
+    renderPokemonList(pokemons, true);
+  } catch (error) {
+    loadError.classList.remove("hidden");
+  }
 }
