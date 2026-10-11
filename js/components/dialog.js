@@ -61,16 +61,16 @@ function showNeighbor(step) {
 
 function createDialogHtml(pokemon) {
   return `
-    <div class="bigCardContainer">
+    <div data-id="overlay-pokemon-name" class="bigCardContainer">
         <div class="bigCardHeader ${pokemon.types[0].type.name}">
         <div class="NameNumber">
          <p class="PokeNumber">#${pokemon.id}</p>
               <h3>${pokemon.name}</h3>  
               </div>
-            <button class="closeBtn">&#10761;</button>
-            <button class="prevBtn">&#8592;</button>
-            <button class="nextBtn">&#8594;</button>
-            <img class="bigPokemonImage" src="${pokemon.artwork}" alt="${pokemon.name}">             
+            <button data-id="close-dialog-button" class="closeBtn">&#10761;</button>
+            <button data-id="prev-button" class="prevBtn">&#8592;</button>
+            <button data-id="next-button" class="nextBtn">&#8594;</button>
+            <img data-id="dialog-image" class="bigPokemonImage" src="${pokemon.artwork}" alt="${pokemon.name}">             
         </div>
         
         <div class="bigCardBody">

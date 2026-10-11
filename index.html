@@ -33,7 +33,7 @@
         </nav>
       </div>
     </header>
-    <main>
+    <main data-id="content">
       <div class="OverlayContainer" id="loadPokemon"></div>
       <div class="moreButton">
         <div id="loading-spinner" class="hidden">
@@ -43,11 +43,18 @@
           Could not load Pokémon. Please check your connection and try again.
         </p>
         <button id="resetSearchBtn" class="hidden resetBtn">Reset</button>
-        <button id="loadMoreBtn" class="NoPush loadMoreBtn">LoadMore...</button>
+        <button
+          data-id="load-more-button"
+          id="loadMoreBtn"
+          class="NoPush loadMoreBtn"
+        >
+          LoadMore...
+        </button>
       </div>
     </main>
 
     <dialog
+      data-id="dialog"
       class="dialogPosition example-dialog"
       id="openPokemonDialog"
     ></dialog>

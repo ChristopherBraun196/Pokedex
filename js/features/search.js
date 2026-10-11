@@ -40,6 +40,7 @@ function resetSearch() {
   loadMoreBtn.classList.remove("hidden");
   renderPokemonList(allPokemons, true);
   searchBtn.disabled = true;
+  loadError.classList.add("hidden");
 }
 
 function findMatches(query) {
