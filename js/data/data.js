@@ -5,18 +5,27 @@ export let pokemonNamesList = [];
 
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
 const POKEMONS_PER_PAGE = 20;
+const MIN_LOADING_TIME = 650;
 
 const pokemonCache = {};
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
 const loadingSpinner = document.querySelector("#loading-spinner");
+const loadError = document.querySelector("#loadError");
 
 let offset = 0;
 
 export function initData() {
+  loadFirstPokemons();
   loadPokemonNames();
-  loadNextPokemons();
-
   initLoadMoreButton();
+}
+
+async function loadFirstPokemons() {
+  try {
+    await loadNextPokemons();
+  } catch (error) {
+    loadError.classList.remove("hidden");
+  }
 }
 
 function initLoadMoreButton() {
@@ -43,16 +52,27 @@ async function loadNextPokemons() {
 }
 
 async function handleLoadMoreClick() {
-  loadingSpinner.classList.remove("hidden");
-  loadMoreBtn.disabled = true;
+  setLoading(true);
   offset += POKEMONS_PER_PAGE;
-  await Promise.all([
-    loadNextPokemons(),
-    new Promise((resolve) => setTimeout(resolve, 650)),
-  ]);
+  loadError.classList.add("hidden");
 
-  loadingSpinner.classList.add("hidden");
-  loadMoreBtn.disabled = false;
+  try {
+    await Promise.all([loadNextPokemons(), wait(MIN_LOADING_TIME)]);
+  } catch (error) {
+    offset -= POKEMONS_PER_PAGE;
+    loadError.classList.remove("hidden");
+  } finally {
+    setLoading(false);
+  }
+}
+
+function setLoading(isLoading) {
+  loadingSpinner.classList.toggle("hidden", !isLoading);
+  loadMoreBtn.disabled = isLoading;
+}
+
+function wait(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
 export async function loadOnePokemon(pokemonUrl) {
