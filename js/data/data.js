@@ -103,5 +103,24 @@ export function getPokemonById(pokemonId) {
 export async function loadEvolutionChain(pokemon) {
   const species = await fetchJson(pokemon.species.url);
   const evolution = await fetchJson(species.evolution_chain.url);
-  return evolution.chain;
+  const ids = getEvolutionIds(evolution.chain);
+
+  const promises = ids.map((id) => loadPokemonById(id));
+  return Promise.all(promises);
+}
+
+function getEvolutionIds(chain) {
+  const ids = [];
+  let current = chain;
+
+  while (current) {
+    ids.push(getIdFromUrl(current.species.url));
+    current = current.evolves_to[0];
+  }
+
+  return ids;
+}
+
+function getIdFromUrl(url) {
+  return Number(url.split("/").at(-2));
 }
