@@ -1,3 +1,5 @@
+import { getHeartSymbol } from "../features/favorites.js";
+
 const pokemonList = document.querySelector("#loadPokemon");
 
 export function renderPokemonList(pokemons, clear = false) {
@@ -9,6 +11,7 @@ export function renderPokemonList(pokemons, clear = false) {
 
 function createCardHtml(pokemon) {
   return `
+   <div class="cardWrapper">   
      <button data-id="card" class="pokeCards ${pokemon.types[0].type.name}" 
      tabindex="0"
       data-pokemon-id="${pokemon.id}"
@@ -28,6 +31,8 @@ function createCardHtml(pokemon) {
             : ""
         }  
         </div>     
-    </button>
+      </button>
+       <button class="favoriteBtn" data-pokemon-id="${pokemon.id}" aria-label="Toggle favorite">${getHeartSymbol(pokemon.id)}</button>
+    </div>       
     `;
 }
