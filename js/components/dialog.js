@@ -44,6 +44,11 @@ async function renderEvolution(pokemon) {
   const evolutions = await loadEvolutionChain(pokemon);
   const container = dialog.querySelector(".evolutionChain");
 
+  if (evolutions.length === 1) {
+    container.textContent = "Does not evolve";
+    return;
+  }
+
   container.innerHTML = evolutions
     .map((evolution) => createEvolutionHtml(evolution))
     .join("");
