@@ -111,11 +111,12 @@ export async function loadEvolutionChain(pokemon) {
 
 function getEvolutionIds(chain) {
   const ids = [];
-  let current = chain;
+  const open = [chain];
 
-  while (current) {
+  while (open.length > 0) {
+    const current = open.shift();
     ids.push(getIdFromUrl(current.species.url));
-    current = current.evolves_to[0];
+    open.push(...current.evolves_to);
   }
 
   return ids;
