@@ -41,17 +41,15 @@ function openPokemonDialog(pokemonId) {
 }
 
 async function renderEvolution(pokemon) {
-  const evolutions = await loadEvolutionChain(pokemon);
   const container = dialog.querySelector(".evolutionChain");
 
-  if (evolutions.length === 1) {
-    container.textContent = "Does not evolve";
-    return;
-  }
+  try {
+    const evolutions = await loadEvolutionChain(pokemon);
 
-  container.innerHTML = evolutions
-    .map((evolution) => createEvolutionHtml(evolution))
-    .join("");
+    container.innerHTML = createEvolutionListHtml(evolutions);
+  } catch (error) {
+    container.textContent = "Could not load evolution.";
+  }
 }
 
 function closeDialog() {
@@ -121,4 +119,10 @@ function createEvolutionHtml(pokemon) {
       <p>${pokemon.name}</p>
     </div>
   `;
+}
+
+function createEvolutionListHtml(evolutions) {
+  if (evolutions.length === 1) return "Does not evolve";
+
+  return evolutions.map((evolution) => createEvolutionHtml(evolution)).join("");
 }
