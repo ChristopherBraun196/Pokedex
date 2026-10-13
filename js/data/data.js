@@ -103,10 +103,34 @@ export function getPokemonById(pokemonId) {
 export async function loadEvolutionChain(pokemon) {
   const species = await fetchJson(pokemon.species.url);
   const evolution = await fetchJson(species.evolution_chain.url);
-  const ids = getEvolutionIds(evolution.chain);
+
+  const ids = getLineIds(evolution.chain, pokemon.id);
 
   const promises = ids.map((id) => loadPokemonById(id));
   return Promise.all(promises);
+}
+
+function getLineIds(chain, pokemonId) {
+  const path = findPathTo(chain, pokemonId);
+  const ancestors = path.slice(0, -1);
+  const ancestorIds = ancestors.map((box) => getIdFromUrl(box.species.url));
+
+  return [...ancestorIds, ...getEvolutionIds(path.at(-1))];
+}
+
+function findPathTo(chain, pokemonId) {
+  const open = [[chain]];
+
+  while (open.length > 0) {
+    const path = open.shift();
+    const current = path.at(-1);
+
+    if (getIdFromUrl(current.species.url) === pokemonId) return path;
+
+    open.push(...current.evolves_to.map((next) => [...path, next]));
+  }
+
+  return [chain];
 }
 
 function getEvolutionIds(chain) {
