@@ -1,4 +1,5 @@
 import { renderPokemonList } from "../components/pokemonCard.js";
+import { REGIONS } from "./regions.js";
 
 export const allPokemons = [];
 export let pokemonNamesList = [];
@@ -13,6 +14,7 @@ const loadingSpinner = document.querySelector("#loading-spinner");
 const loadError = document.querySelector("#loadError");
 
 let offset = 0;
+let currentRegion = REGIONS[0];
 
 export function initData() {
   loadFirstPokemons();
@@ -38,8 +40,9 @@ async function loadPokemonNames() {
 }
 
 async function loadNextPokemons() {
+  const start = currentRegion.first - 1 + offset;
   const data = await fetchJson(
-    `${POKEMON_API_URL}?limit=${POKEMONS_PER_PAGE}&offset=${offset}`,
+    `${POKEMON_API_URL}?limit=${POKEMONS_PER_PAGE}&offset=${start}`,
   );
   const promises = data.results.map((pokemon) => loadOnePokemon(pokemon.url));
 
@@ -148,4 +151,12 @@ function getEvolutionIds(chain) {
 
 function getIdFromUrl(url) {
   return Number(url.split("/").at(-2));
+}
+
+export function switchRegion(regionName) {
+  currentRegion = REGIONS.find((region) => region.name === regionName);
+  offset = 0;
+  allPokemons.length = 0;
+
+  loadFirstPokemons();
 }
