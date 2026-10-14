@@ -40,9 +40,10 @@ async function loadPokemonNames() {
 }
 
 async function loadNextPokemons() {
+  const limit = Math.min(POKEMONS_PER_PAGE, getRegionSize() - offset);
   const start = currentRegion.first - 1 + offset;
   const data = await fetchJson(
-    `${POKEMON_API_URL}?limit=${POKEMONS_PER_PAGE}&offset=${start}`,
+    `${POKEMON_API_URL}?limit=${limit}&offset=${start}`,
   );
   const promises = data.results.map((pokemon) => loadOnePokemon(pokemon.url));
 
@@ -50,6 +51,7 @@ async function loadNextPokemons() {
   allPokemons.push(...newPokemons);
 
   renderPokemonList(newPokemons, offset === 0);
+  loadMoreBtn.classList.toggle("hidden", allPokemons.length >= getRegionSize());
 }
 
 async function handleLoadMoreClick() {
@@ -159,4 +161,8 @@ export function switchRegion(regionName) {
   allPokemons.length = 0;
 
   loadFirstPokemons();
+}
+
+function getRegionSize() {
+  return currentRegion.last - currentRegion.first + 1;
 }
