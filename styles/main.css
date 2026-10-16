@@ -13,6 +13,8 @@
 @import "./blocks/detail.css";
 @import "./blocks/list-actions.css";
 @import "./blocks/legal.css";
+@source not "../README.md";
+@source not "../LICENSE";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
