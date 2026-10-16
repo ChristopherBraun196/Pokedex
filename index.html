@@ -155,7 +155,13 @@
     </div>
 
     <main data-id="content">
-      <div class="OverlayContainer" id="loadPokemon"></div>
+      <ul class="card-list" id="loadPokemon"></ul>
+      <p
+        class="card-list__empty hidden"
+        id="notFound"
+        data-id="not-found"
+        aria-live="polite"
+      ></p>
 
       <div class="moreButton">
         <div id="loading-spinner" class="hidden">

@@ -6,6 +6,8 @@
 @import "./blocks/theme-toggle.css";
 @import "./blocks/toolbar.css";
 @import "./blocks/regions.css";
+@import "./blocks/card-list.css";
+@import "./blocks/card.css";
 @import "./blocks/footer.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -40,6 +42,46 @@
   --color-accent: #ffcb05;
   --color-accent-light: #ffe27a;
 
+  --color-on-type: #ffffff;
+  --color-heart: #c81e32;
+
+  --color-normal-tint: #e6e5d3;
+  --color-normal-deep: #5a5937;
+  --color-fire-tint: #fce0cc;
+  --color-fire-deep: #9a3f08;
+  --color-water-tint: #d6e4fb;
+  --color-water-deep: #1f4da8;
+  --color-electric-tint: #fbf0b8;
+  --color-electric-deep: #7a5c00;
+  --color-grass-tint: #ddf2d0;
+  --color-grass-deep: #2f6b1a;
+  --color-ice-tint: #d5f2f1;
+  --color-ice-deep: #1f6b68;
+  --color-fighting-tint: #f5d3d1;
+  --color-fighting-deep: #9b231f;
+  --color-poison-tint: #ebd3ea;
+  --color-poison-deep: #7a2a78;
+  --color-ground-tint: #f5ebcf;
+  --color-ground-deep: #7a5a12;
+  --color-flying-tint: #e3dcfb;
+  --color-flying-deep: #4b33a8;
+  --color-psychic-tint: #fcd6e2;
+  --color-psychic-deep: #a8234f;
+  --color-bug-tint: #e8edc7;
+  --color-bug-deep: #5a6510;
+  --color-rock-tint: #ede7cc;
+  --color-rock-deep: #6b5b12;
+  --color-ghost-tint: #e0d7ec;
+  --color-ghost-deep: #4d3572;
+  --color-dragon-tint: #ddd2fd;
+  --color-dragon-deep: #4a1fc2;
+  --color-dark-tint: #e2dad4;
+  --color-dark-deep: #4a3a2e;
+  --color-steel-tint: #e3e3ec;
+  --color-steel-deep: #4f4f6b;
+  --color-fairy-tint: #f8dcea;
+  --color-fairy-deep: #96305f;
+
   --font-display: "Unbounded", sans-serif;
   --font-body: "Figtree", sans-serif;
 }
@@ -50,6 +92,46 @@
   --color-ink: #f2f4f8;
   --color-muted: #b5bac8;
   --color-outline: #0a0b10;
+
+  --color-on-type: #12141c;
+  --color-heart: #ff7a8a;
+
+  --color-normal-tint: #33321f;
+  --color-normal-deep: #d6d4ae;
+  --color-fire-tint: #47230b;
+  --color-fire-deep: #f8b185;
+  --color-water-tint: #152a52;
+  --color-water-deep: #9dbdf8;
+  --color-electric-tint: #3d3100;
+  --color-electric-deep: #f5dc6b;
+  --color-grass-tint: #1f3a17;
+  --color-grass-deep: #a9e08c;
+  --color-ice-tint: #143a39;
+  --color-ice-deep: #a3e6e3;
+  --color-fighting-tint: #451714;
+  --color-fighting-deep: #f4a49f;
+  --color-poison-tint: #3a1b39;
+  --color-poison-deep: #e3a6e1;
+  --color-ground-tint: #3d3010;
+  --color-ground-deep: #efd58f;
+  --color-flying-tint: #291f5c;
+  --color-flying-deep: #c5b8f9;
+  --color-psychic-tint: #4a1626;
+  --color-psychic-deep: #f9a8c2;
+  --color-bug-tint: #2e3409;
+  --color-bug-deep: #d5e27a;
+  --color-rock-tint: #36300f;
+  --color-rock-deep: #e0cf8a;
+  --color-ghost-tint: #2a1f3d;
+  --color-ghost-deep: #c4aee6;
+  --color-dragon-tint: #24136b;
+  --color-dragon-deep: #bfa8fe;
+  --color-dark-tint: #2b231c;
+  --color-dark-deep: #cdbaa9;
+  --color-steel-tint: #2a2a38;
+  --color-steel-deep: #c9c9de;
+  --color-fairy-tint: #44203a;
+  --color-fairy-deep: #f2b3d3;
 }
 
 body {

@@ -1,0 +1,136 @@
+.card {
+  @apply relative;
+}
+
+.card__open {
+  @apply flex flex-col items-center gap-2 md:gap-3;
+  @apply h-full w-full;
+  @apply p-3 md:p-5;
+  @apply cursor-pointer rounded-2xl bg-(--type-tint) text-(--type-deep) md:rounded-3xl;
+  @apply motion-safe:transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-lens;
+}
+
+.card__number {
+  @apply self-start;
+  @apply font-display text-base font-bold md:text-xl;
+}
+
+.card__image {
+  @apply size-21 object-contain md:size-34;
+}
+
+.card__name {
+  @apply font-display text-sm font-bold text-ink capitalize md:text-lg;
+}
+
+.card__types {
+  @apply flex flex-wrap justify-center gap-2;
+}
+
+.card__type {
+  @apply px-3 py-1;
+  @apply rounded-full bg-(--type-deep) text-xs font-bold text-on-type capitalize md:text-[13px];
+}
+
+.card__favorite {
+  @apply absolute top-2 right-2 flex items-center justify-center md:top-4 md:right-4;
+  @apply size-11;
+  @apply cursor-pointer rounded-full bg-surface fill-none text-heart;
+  @apply aria-pressed:fill-current focus-visible:outline-3 focus-visible:outline-lens;
+}
+
+.card__heart {
+  @apply size-5.5 stroke-current stroke-2;
+  stroke-linejoin: round;
+}
+
+.card--normal,
+.card__type--normal {
+  --type-tint: var(--color-normal-tint);
+  --type-deep: var(--color-normal-deep);
+}
+.card--fire,
+.card__type--fire {
+  --type-tint: var(--color-fire-tint);
+  --type-deep: var(--color-fire-deep);
+}
+.card--water,
+.card__type--water {
+  --type-tint: var(--color-water-tint);
+  --type-deep: var(--color-water-deep);
+}
+.card--electric,
+.card__type--electric {
+  --type-tint: var(--color-electric-tint);
+  --type-deep: var(--color-electric-deep);
+}
+.card--grass,
+.card__type--grass {
+  --type-tint: var(--color-grass-tint);
+  --type-deep: var(--color-grass-deep);
+}
+.card--ice,
+.card__type--ice {
+  --type-tint: var(--color-ice-tint);
+  --type-deep: var(--color-ice-deep);
+}
+.card--fighting,
+.card__type--fighting {
+  --type-tint: var(--color-fighting-tint);
+  --type-deep: var(--color-fighting-deep);
+}
+.card--poison,
+.card__type--poison {
+  --type-tint: var(--color-poison-tint);
+  --type-deep: var(--color-poison-deep);
+}
+.card--ground,
+.card__type--ground {
+  --type-tint: var(--color-ground-tint);
+  --type-deep: var(--color-ground-deep);
+}
+.card--flying,
+.card__type--flying {
+  --type-tint: var(--color-flying-tint);
+  --type-deep: var(--color-flying-deep);
+}
+.card--psychic,
+.card__type--psychic {
+  --type-tint: var(--color-psychic-tint);
+  --type-deep: var(--color-psychic-deep);
+}
+.card--bug,
+.card__type--bug {
+  --type-tint: var(--color-bug-tint);
+  --type-deep: var(--color-bug-deep);
+}
+.card--rock,
+.card__type--rock {
+  --type-tint: var(--color-rock-tint);
+  --type-deep: var(--color-rock-deep);
+}
+.card--ghost,
+.card__type--ghost {
+  --type-tint: var(--color-ghost-tint);
+  --type-deep: var(--color-ghost-deep);
+}
+.card--dragon,
+.card__type--dragon {
+  --type-tint: var(--color-dragon-tint);
+  --type-deep: var(--color-dragon-deep);
+}
+.card--dark,
+.card__type--dark {
+  --type-tint: var(--color-dark-tint);
+  --type-deep: var(--color-dark-deep);
+}
+.card--steel,
+.card__type--steel {
+  --type-tint: var(--color-steel-tint);
+  --type-deep: var(--color-steel-deep);
+}
+.card--fairy,
+.card__type--fairy {
+  --type-tint: var(--color-fairy-tint);
+  --type-deep: var(--color-fairy-deep);
+}

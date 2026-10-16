@@ -1,4 +1,5 @@
 .footer {
+  @apply md:sticky md:bottom-0 md:z-10;
   @apply bg-outline text-white;
 }
 

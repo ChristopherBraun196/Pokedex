@@ -41,16 +41,12 @@ export function toggleFavorite(pokemonId) {
 }
 
 function handleFavoriteClick(event) {
-  const button = event.target.closest(".favoriteBtn");
+  const button = event.target.closest(".card__favorite");
   if (!button) return;
 
   const pokemonId = Number(button.dataset.pokemonId);
   toggleFavorite(pokemonId);
-  button.textContent = getHeartSymbol(pokemonId);
-}
-
-export function getHeartSymbol(pokemonId) {
-  return isFavorite(pokemonId) ? "♥" : "♡";
+  button.setAttribute("aria-pressed", isFavorite(pokemonId));
 }
 
 async function showFavorites() {

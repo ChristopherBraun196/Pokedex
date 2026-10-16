@@ -26,7 +26,7 @@ function handleDialogClick(event) {
 }
 
 function handleCardClick(event) {
-  const card = event.target.closest(".pokeCards");
+  const card = event.target.closest(".card__open");
   if (!card) return;
   openPokemonDialog(Number(card.dataset.pokemonId));
 }
@@ -59,7 +59,7 @@ function closeDialog() {
 }
 
 function getShownPokemonIds() {
-  const cards = pokemonList.querySelectorAll(".pokeCards");
+  const cards = pokemonList.querySelectorAll(".card__open");
   return [...cards].map((card) => Number(card.dataset.pokemonId));
 }
 
