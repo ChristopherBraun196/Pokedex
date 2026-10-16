@@ -16,10 +16,18 @@ function handleRegionClick(event) {
   if (!button) return;
   resetSearch();
   switchRegion(button.dataset.region);
+  markActiveRegion(button);
+}
+
+function markActiveRegion(activeButton) {
+  const buttons = regionNav.querySelectorAll(".regionBtn");
+  buttons.forEach((button) =>
+    button.setAttribute("aria-pressed", button === activeButton),
+  );
 }
 
 function createRegionButtonHtml(region) {
   return `
-    <button class="regionBtn" data-region="${region.name}">${region.name}</button>
+    <button class="regionBtn" data-region="${region.name}" aria-pressed="${region === REGIONS[0]}" >${region.name} </button>
   `;
 }
