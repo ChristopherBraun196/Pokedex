@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="./styles/pokemon.css" />
     <link rel="stylesheet" href="./styles/pokemonTypes.css" />
     <link rel="stylesheet" href="./styles/BigPokedexCard.css" />
-    <script src="./scripts/templates.js"></script>
   </head>
-  <body onload="init()">
+  <body>
     <div class="Background"></div>
     <header>
       <div class="HeaderBar">
@@ -23,31 +22,88 @@
         </div>
         <nav class="SearchBar" tabindex="0" aria-label="searchBar">
           <input
+            data-i18n-placeholder="search-placeholder"
+            data-id="search-input"
             id="search"
             type="text"
             placeholder="Search.."
-            onkeyup="searchPokemon()"
           />
+          <button
+            data-i18n="search-button"
+            data-id="search-button"
+            aria-label="Search Pokémon"
+            disabled
+          >
+            Search
+          </button>
+          <button
+            data-i18n="theme-toggle"
+            id="themeToggleBtn"
+            aria-label="Switch to dark mode"
+          >
+            Dark
+          </button>
+          <div id="languageSwitch">
+            <button
+              class="languageBtn"
+              data-lang="en"
+              aria-label="Switch to English"
+            >
+              EN
+            </button>
+            <button
+              class="languageBtn"
+              data-lang="de"
+              aria-label="Auf Deutsch umschalten"
+            >
+              DE
+            </button>
+          </div>
         </nav>
       </div>
     </header>
-    <main>
+    <main data-id="content">
+      <nav id="regionNav" aria-label="Region"></nav>
+
+      <div class="menu-bars">
+        <button
+          data-i18n="show-all"
+          id="showAllBtn"
+          aria-label="Show all Pokémon"
+        >
+          All
+        </button>
+        <button
+          data-i18n="show-favorites"
+          id="showFavoritesBtn"
+          aria-label="Show favorite Pokémon"
+        >
+          Favorites
+        </button>
+      </div>
       <div class="OverlayContainer" id="loadPokemon"></div>
       <div class="moreButton">
         <div id="loading-spinner" class="hidden">
           <div class="spinner"></div>
         </div>
+        <p data-i18n="load-error" id="loadError" class="hidden">
+          Could not load Pokémon. Please check your connection and try again.
+        </p>
         <button
+          data-i18n="reset-search"
           id="resetSearchBtn"
           class="hidden resetBtn"
-          onclick="resetSearch()"
+          aria-label="Reset search"
         >
           Reset
         </button>
+
         <button
+          data-i18n="load-more"
+          data-id="load-more-button"
+          aria-label="Load more Pokémon"
           id="loadMoreBtn"
           class="NoPush loadMoreBtn"
-          onclick="loadMorePokemon()"
         >
           LoadMore...
         </button>
@@ -55,6 +111,8 @@
     </main>
 
     <dialog
+      data-id="dialog"
+      aria-label="Pokémon details"
       class="dialogPosition example-dialog"
       id="openPokemonDialog"
     ></dialog>
@@ -67,6 +125,6 @@
         <span>2026</span>
       </div>
     </footer>
-    <script src="./script.js"></script>
+    <script src="./js/main.js" type="module"></script>
   </body>
 </html>

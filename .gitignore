@@ -1,0 +1,5 @@
+CLAUDE.md
+/logs
+.git
+.DS_Store
+node_modules/
