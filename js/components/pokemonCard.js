@@ -1,4 +1,5 @@
 import { getHeartSymbol } from "../features/favorites.js";
+import { translate } from "../features/i18n.js";
 
 const pokemonList = document.querySelector("#loadPokemon");
 
@@ -22,12 +23,12 @@ function createCardHtml(pokemon) {
         <p class="PositionNumber">#${pokemon.id}</p>
         <h2> ${pokemon.name}</h2>
         <div class="PokeElement">
-        <span class="type ${pokemon.types[0].type.name}">${
-          pokemon.types[0].type.name
-        }</span> 
+                <span class="type ${pokemon.types[0].type.name}">${translate(
+                  pokemon.types[0].type.name,
+                )}</span> 
         ${
           pokemon.types[1]
-            ? `<span class="type ${pokemon.types[1].type.name}">${pokemon.types[1].type.name}</span>`
+            ? `<span class="type ${pokemon.types[1].type.name}">${translate(pokemon.types[1].type.name)}</span>`
             : ""
         }  
         </div>     
