@@ -26,6 +26,7 @@ async function loadFirstPokemons() {
   try {
     await loadNextPokemons();
   } catch (error) {
+    console.error(error);
     loadError.classList.remove("hidden");
   }
 }
@@ -64,6 +65,7 @@ async function handleLoadMoreClick() {
   try {
     await Promise.all([loadNextPokemons(), wait(MIN_LOADING_TIME)]);
   } catch (error) {
+    console.error(error);
     offset -= POKEMONS_PER_PAGE;
     loadError.classList.remove("hidden");
   } finally {

@@ -48,6 +48,7 @@ async function renderEvolution(pokemon) {
 
     container.innerHTML = createEvolutionListHtml(evolutions);
   } catch (error) {
+    console.error(error);
     container.textContent = "Could not load evolution.";
   }
 }

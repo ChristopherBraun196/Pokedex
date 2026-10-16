@@ -62,6 +62,7 @@ async function renderMatches(matches) {
 
     renderPokemonList(pokemons, true);
   } catch (error) {
+    console.error(error);
     loadError.classList.remove("hidden");
   }
 }
