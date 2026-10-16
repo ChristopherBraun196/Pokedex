@@ -7,7 +7,10 @@ const pokemonList = document.querySelector("#loadPokemon");
 export function renderPokemonList(pokemons, clear = false) {
   if (clear) pokemonList.innerHTML = "";
 
-  const cardsHtml = pokemons.map((pokemon) => createCardHtml(pokemon)).join("");
+  const cardsHtml = pokemons
+    .map((pokemon, index) => createCardHtml(pokemon, clear && index < 4))
+    .join("");
+
   pokemonList.insertAdjacentHTML("beforeend", cardsHtml);
 }
 
@@ -22,7 +25,7 @@ export function rerenderCards() {
   );
 }
 
-function createCardHtml(pokemon) {
+function createCardHtml(pokemon, isPriority) {
   const name = getPokemonName(pokemon);
   const number = String(pokemon.id).padStart(3, "0");
   const typesHtml = pokemon.types
@@ -45,7 +48,8 @@ function createCardHtml(pokemon) {
           alt="${name}"
           width="136"
           height="136"
-          loading="lazy"
+          ${isPriority ? 'fetchpriority="high"' : 'loading="lazy"'}
+
         />
         <span class="card__name">${name}</span>
         <span class="card__types">${typesHtml}</span>
