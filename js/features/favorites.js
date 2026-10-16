@@ -6,6 +6,7 @@ const pokemonList = document.querySelector("#loadPokemon");
 const showAllBtn = document.querySelector("#showAllBtn");
 const showFavoritesBtn = document.querySelector("#showFavoritesBtn");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
+const favoriteCount = document.querySelector("#favoriteCount");
 
 let favoriteIds = loadFavoriteIds();
 
@@ -13,6 +14,7 @@ export function initFavorites() {
   pokemonList.addEventListener("click", handleFavoriteClick);
   showAllBtn.addEventListener("click", showAll);
   showFavoritesBtn.addEventListener("click", showFavorites);
+  updateFavoriteCount();
 }
 
 function loadFavoriteIds() {
@@ -35,6 +37,7 @@ export function toggleFavorite(pokemonId) {
     favoriteIds.push(pokemonId);
   }
   saveFavoriteIds();
+  updateFavoriteCount();
 }
 
 function handleFavoriteClick(event) {
@@ -52,13 +55,29 @@ export function getHeartSymbol(pokemonId) {
 
 async function showFavorites() {
   loadMoreBtn.classList.add("hidden");
-  const promises = favoriteIds.map((id) => loadPokemonById(id));
+  const sortedIds = [...favoriteIds].sort((a, b) => a - b);
+  const promises = sortedIds.map((id) => loadPokemonById(id));
+
   const pokemons = await Promise.all(promises);
 
   renderPokemonList(pokemons, true);
+  markActiveView(showFavoritesBtn);
 }
 
 function showAll() {
   renderPokemonList(allPokemons, true);
   loadMoreBtn.classList.remove("hidden");
+  markActiveView(showAllBtn);
+}
+
+function markActiveView(activeButton) {
+  showAllBtn.setAttribute("aria-pressed", showAllBtn === activeButton);
+  showFavoritesBtn.setAttribute(
+    "aria-pressed",
+    showFavoritesBtn === activeButton,
+  );
+}
+
+function updateFavoriteCount() {
+  favoriteCount.textContent = favoriteIds.length;
 }
