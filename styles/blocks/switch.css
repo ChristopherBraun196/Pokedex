@@ -1,0 +1,7 @@
+.switch {
+  @apply flex gap-0.5 rounded-full bg-outline p-0.5;
+}
+
+.switch__button {
+  @apply h-11 min-w-13 cursor-pointer rounded-full px-3.5 font-bold text-white focus-visible:outline-3 focus-visible:outline-lens aria-pressed:bg-white aria-pressed:text-outline;
+}

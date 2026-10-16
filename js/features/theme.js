@@ -8,8 +8,11 @@ export function initTheme() {
 }
 
 function toggleTheme() {
-  const isDark = document.documentElement.classList.toggle("dark");
-  localStorage.setItem(STORAGE_KEY, isDark ? "dark" : "light");
+  const isDark = document.documentElement.classList.contains("dark");
+  const theme = isDark ? "light" : "dark";
+
+  applyTheme(theme);
+  localStorage.setItem(STORAGE_KEY, theme);
 }
 
 function loadTheme() {
@@ -21,5 +24,11 @@ function loadTheme() {
 }
 
 function applyTheme(theme) {
-  document.documentElement.classList.toggle("dark", theme === "dark");
+  const isDark = theme === "dark";
+
+  document.documentElement.classList.toggle("dark", isDark);
+  themeToggleBtn.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode",
+  );
 }

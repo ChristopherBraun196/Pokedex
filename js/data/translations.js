@@ -1,14 +1,12 @@
 export const TRANSLATIONS = {
   en: {
-    "search-placeholder": "Search..",
-    "search-button": "Search",
+    "search-placeholder": "Search Pokémon…",
     "show-all": "All",
     "show-favorites": "Favorites",
     "reset-search": "Reset",
     "load-more": "Load more",
     "load-error":
       "Could not load Pokémon. Please check your connection and try again.",
-    "theme-toggle": "Dark",
     "no-results": "No Pokémon found matching",
     "does-not-evolve": "Does not evolve",
     "evolution-error": "Could not load evolution.",
@@ -40,15 +38,13 @@ export const TRANSLATIONS = {
     fairy: "Fairy",
   },
   de: {
-    "search-placeholder": "Suchen..",
-    "search-button": "Suchen",
+    "search-placeholder": "Pokémon suchen …",
     "show-all": "Alle",
     "show-favorites": "Favoriten",
     "reset-search": "Zurücksetzen",
     "load-more": "Mehr laden",
     "load-error":
       "Pokémon konnten nicht geladen werden. Bitte prüfe deine Verbindung und versuche es erneut.",
-    "theme-toggle": "Dunkel",
     "no-results": "Kein Pokémon gefunden für",
     "does-not-evolve": "Entwickelt sich nicht",
     "evolution-error": "Entwicklung konnte nicht geladen werden.",

@@ -1,0 +1,17 @@
+.theme-toggle {
+  @apply flex size-12 cursor-pointer items-center justify-center rounded-full bg-outline text-white focus-visible:outline-3 focus-visible:outline-lens;
+}
+
+.theme-toggle__icon {
+  @apply size-6 fill-none stroke-current stroke-[2.5];
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle__icon--moon {
+  @apply dark:hidden;
+}
+
+.theme-toggle__icon--sun {
+  @apply hidden dark:block;
+}

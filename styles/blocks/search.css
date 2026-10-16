@@ -1,0 +1,16 @@
+.search {
+  @apply flex h-12 w-90 min-w-0 items-center gap-2 rounded-full border-3 border-outline bg-surface pr-1.5 pl-4.5 focus-within:ring-3 focus-within:ring-lens;
+}
+
+.search__input {
+  @apply w-full bg-transparent text-base text-ink outline-none placeholder:text-muted;
+}
+
+.search__button {
+  @apply flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-ink text-ground disabled:cursor-not-allowed disabled:opacity-40;
+}
+
+.search__icon {
+  @apply size-5 fill-none stroke-current stroke-[2.5];
+  stroke-linecap: round;
+}

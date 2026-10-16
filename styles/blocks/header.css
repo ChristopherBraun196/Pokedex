@@ -1,0 +1,43 @@
+.header {
+  @apply bg-brand border-b-6 border-outline;
+}
+
+.header__inner {
+  @apply mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-5 px-8 py-5;
+}
+
+.header__brand {
+  @apply flex items-center gap-4;
+}
+
+.header__lens {
+  @apply size-14 rounded-full border-5 border-white bg-lens ring-3 ring-outline;
+}
+
+.header__lights {
+  @apply flex gap-1.5 self-start;
+}
+
+.header__light {
+  @apply size-3 rounded-full border-2 border-outline;
+}
+
+.header__light--red {
+  @apply bg-lamp-red;
+}
+
+.header__light--yellow {
+  @apply bg-lamp-yellow;
+}
+
+.header__light--green {
+  @apply bg-lamp-green;
+}
+
+.header__title {
+  @apply font-display text-3xl font-bold text-white;
+}
+
+.header__actions {
+  @apply contents;
+}

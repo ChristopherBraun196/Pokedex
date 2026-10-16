@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import "./blocks/header.css";
+@import "./blocks/search.css";
+@import "./blocks/switch.css";
+@import "./blocks/theme-toggle.css";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
@@ -23,6 +28,12 @@
   --color-ink: #14161f;
   --color-muted: #4a4f5e;
   --color-brand: #c81e32;
+  --color-outline: #14161f;
+  --color-lens: #3ba7e8;
+  --color-lamp-red: #ff6b6b;
+  --color-lamp-yellow: #ffcb05;
+  --color-lamp-green: #5bd46d;
+
   --font-display: "Unbounded", sans-serif;
   --font-body: "Figtree", sans-serif;
 }
