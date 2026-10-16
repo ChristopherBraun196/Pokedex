@@ -1,5 +1,6 @@
 import { getHeartSymbol } from "../features/favorites.js";
-import { translate } from "../features/i18n.js";
+import { translate, getPokemonName } from "../features/i18n.js";
+import { getPokemonById } from "../data/data.js";
 
 const pokemonList = document.querySelector("#loadPokemon");
 
@@ -8,6 +9,17 @@ export function renderPokemonList(pokemons, clear = false) {
 
   const cardsHtml = pokemons.map((pokemon) => createCardHtml(pokemon)).join("");
   pokemonList.insertAdjacentHTML("beforeend", cardsHtml);
+}
+
+export function rerenderCards() {
+  const cards = pokemonList.querySelectorAll(".pokeCards");
+  const ids = [...cards].map((card) => Number(card.dataset.pokemonId));
+  if (!ids.length) return;
+
+  renderPokemonList(
+    ids.map((id) => getPokemonById(id)),
+    true,
+  );
 }
 
 function createCardHtml(pokemon) {
@@ -21,7 +33,7 @@ function createCardHtml(pokemon) {
      
         <img  data-id="card-image" src="${pokemon.artwork}"  alt="${pokemon.name}">        
         <p class="PositionNumber">#${pokemon.id}</p>
-        <h2> ${pokemon.name}</h2>
+        <h2> ${getPokemonName(pokemon)}</h2>
         <div class="PokeElement">
                 <span class="type ${pokemon.types[0].type.name}">${translate(
                   pokemon.types[0].type.name,

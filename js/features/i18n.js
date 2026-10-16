@@ -1,4 +1,6 @@
 import { TRANSLATIONS } from "../data/translations.js";
+import { GERMAN_NAMES } from "../data/germanNames.js";
+import { rerenderCards } from "../components/pokemonCard.js";
 
 const STORAGE_KEY = "lang";
 const languageSwitch = document.querySelector("#languageSwitch");
@@ -10,6 +12,11 @@ export function initLanguage() {
   languageSwitch.addEventListener("click", handleLanguageClick);
 }
 
+export function getPokemonName(pokemon) {
+  if (currentLanguage === "de") return GERMAN_NAMES[pokemon.id];
+  return pokemon.name;
+}
+
 export function translate(key) {
   return TRANSLATIONS[currentLanguage][key];
 }
@@ -18,6 +25,7 @@ function handleLanguageClick(event) {
   const button = event.target.closest(".languageBtn");
   if (!button) return;
   setLanguage(button.dataset.lang);
+  rerenderCards();
 }
 
 function loadLanguage() {

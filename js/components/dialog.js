@@ -1,5 +1,5 @@
 import { getPokemonById, loadEvolutionChain } from "../data/data.js";
-import { translate } from "../features/i18n.js";
+import { translate, getPokemonName } from "../features/i18n.js";
 
 const dialog = document.querySelector("#openPokemonDialog");
 const pokemonList = document.querySelector("#loadPokemon");
@@ -80,7 +80,7 @@ function createDialogHtml(pokemon) {
         <div class="bigCardHeader ${pokemon.types[0].type.name}">
         <div class="NameNumber">
          <p class="PokeNumber">#${pokemon.id}</p>
-              <h3>${pokemon.name}</h3>  
+              <h3>${getPokemonName(pokemon)}</h3>  
               </div>
                 <button data-id="close-dialog-button" class="closeBtn" aria-label="Close dialog">&#10761;</button>
                 <button data-id="prev-button" class="prevBtn" aria-label="Previous Pokémon">&#8592;</button>
@@ -118,7 +118,7 @@ function createEvolutionHtml(pokemon) {
   return `
     <div class="evolutionStep">
       <img src="${pokemon.artwork}" alt="${pokemon.name}" width="80">
-      <p>${pokemon.name}</p>
+      <p>${getPokemonName(pokemon)}</p>
     </div>
   `;
 }
