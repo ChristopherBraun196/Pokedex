@@ -35,7 +35,9 @@ function initLoadMoreButton() {
 }
 
 async function loadPokemonNames() {
-  const data = await fetchJson(`${POKEMON_API_URL}?limit=151`);
+  const data = await fetchJson(
+    `${POKEMON_API_URL}?limit=${getRegionSize()}&offset=${currentRegion.first - 1}`,
+  );
   pokemonNamesList = data.results;
 }
 
@@ -161,6 +163,7 @@ export function switchRegion(regionName) {
   allPokemons.length = 0;
 
   loadFirstPokemons();
+  loadPokemonNames();
 }
 
 function getRegionSize() {
