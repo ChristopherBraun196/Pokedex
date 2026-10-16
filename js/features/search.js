@@ -1,6 +1,7 @@
 import { allPokemons, pokemonNamesList, loadOnePokemon } from "../data/data.js";
 import { renderPokemonList } from "../components/pokemonCard.js";
 import { translate } from "./i18n.js";
+import { GERMAN_NAMES } from "../data/germanNames.js";
 
 const searchInput = document.querySelector("#search");
 const searchBtn = document.querySelector('[data-id="search-button"]');
@@ -45,7 +46,15 @@ export function resetSearch() {
 }
 
 function findMatches(query) {
-  return pokemonNamesList.filter((p) => p.name.includes(query)).slice(0, 10);
+  return pokemonNamesList
+    .filter((entry) => matchesQuery(entry, query))
+    .slice(0, 10);
+}
+
+function matchesQuery(entry, query) {
+  const id = Number(entry.url.split("/").at(-2));
+  const germanName = GERMAN_NAMES[id].toLowerCase();
+  return entry.name.includes(query) || germanName.includes(query);
 }
 
 function renderNoResults(query) {
