@@ -1,5 +1,5 @@
 .theme-toggle {
-  @apply flex items-center justify-center;
+  @apply flex items-center justify-center order-3 md:order-0;
   @apply size-12;
   @apply cursor-pointer rounded-full bg-outline text-white;
   @apply focus-visible:outline-3 focus-visible:outline-lens;

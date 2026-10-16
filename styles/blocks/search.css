@@ -1,6 +1,6 @@
 .search {
-  @apply flex items-center gap-2 order-last md:order-0;
-  @apply h-12 w-full min-w-0 md:w-90;
+  @apply flex items-center gap-2 order-2 grow basis-48 md:order-0 md:grow-0 md:basis-auto;
+  @apply h-12 min-w-0 md:w-90;
   @apply pr-1.5 pl-4.5;
   @apply rounded-full border-3 border-outline bg-surface;
   @apply focus-within:ring-3 focus-within:ring-lens;
