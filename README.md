@@ -78,3 +78,20 @@ npm run watch:css
 - Fonts: Unbounded and Figtree, SIL Open Font License
 
 Pokémon and all related names are trademarks of Nintendo, Game Freak and The Pokémon Company. This is a non-commercial fan project without any affiliation.
+
+## License
+
+The **source code** is available under the [MIT License](./LICENSE).
+
+The following are **not** covered by it:
+
+- **Pokémon names, data and artwork:** loaded from the PokéAPI, trademarks of Nintendo, Game Freak and The Pokémon Company.
+- **Pokéball image:** by Darwin Bulos on Pixabay, under the Pixabay Content License.
+- **Fonts:** Unbounded and Figtree under the SIL Open Font License, see `assets/fonts/`.
+- **Legal texts** on the imprint and privacy pages: created with Datenschutz-Generator.de and adapted.
+
+## Contact
+
+- Email: [kontakt@christopher-braun-dev.de](mailto:kontakt@christopher-braun-dev.de)
+- LinkedIn: [christopher-braun-dev](https://www.linkedin.com/in/christopher-braun-dev)
+- GitHub: [ChristopherBraun196](https://github.com/ChristopherBraun196)
