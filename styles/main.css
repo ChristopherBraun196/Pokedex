@@ -9,6 +9,7 @@
 @import "./blocks/card-list.css";
 @import "./blocks/card.css";
 @import "./blocks/footer.css";
+@import "./blocks/types.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

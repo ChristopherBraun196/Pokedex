@@ -875,78 +875,6 @@
   stroke-width: 2;
   stroke-linejoin: round;
 }
-.card--normal, .card__type--normal {
-  --type-tint: var(--color-normal-tint);
-  --type-deep: var(--color-normal-deep);
-}
-.card--fire, .card__type--fire {
-  --type-tint: var(--color-fire-tint);
-  --type-deep: var(--color-fire-deep);
-}
-.card--water, .card__type--water {
-  --type-tint: var(--color-water-tint);
-  --type-deep: var(--color-water-deep);
-}
-.card--electric, .card__type--electric {
-  --type-tint: var(--color-electric-tint);
-  --type-deep: var(--color-electric-deep);
-}
-.card--grass, .card__type--grass {
-  --type-tint: var(--color-grass-tint);
-  --type-deep: var(--color-grass-deep);
-}
-.card--ice, .card__type--ice {
-  --type-tint: var(--color-ice-tint);
-  --type-deep: var(--color-ice-deep);
-}
-.card--fighting, .card__type--fighting {
-  --type-tint: var(--color-fighting-tint);
-  --type-deep: var(--color-fighting-deep);
-}
-.card--poison, .card__type--poison {
-  --type-tint: var(--color-poison-tint);
-  --type-deep: var(--color-poison-deep);
-}
-.card--ground, .card__type--ground {
-  --type-tint: var(--color-ground-tint);
-  --type-deep: var(--color-ground-deep);
-}
-.card--flying, .card__type--flying {
-  --type-tint: var(--color-flying-tint);
-  --type-deep: var(--color-flying-deep);
-}
-.card--psychic, .card__type--psychic {
-  --type-tint: var(--color-psychic-tint);
-  --type-deep: var(--color-psychic-deep);
-}
-.card--bug, .card__type--bug {
-  --type-tint: var(--color-bug-tint);
-  --type-deep: var(--color-bug-deep);
-}
-.card--rock, .card__type--rock {
-  --type-tint: var(--color-rock-tint);
-  --type-deep: var(--color-rock-deep);
-}
-.card--ghost, .card__type--ghost {
-  --type-tint: var(--color-ghost-tint);
-  --type-deep: var(--color-ghost-deep);
-}
-.card--dragon, .card__type--dragon {
-  --type-tint: var(--color-dragon-tint);
-  --type-deep: var(--color-dragon-deep);
-}
-.card--dark, .card__type--dark {
-  --type-tint: var(--color-dark-tint);
-  --type-deep: var(--color-dark-deep);
-}
-.card--steel, .card__type--steel {
-  --type-tint: var(--color-steel-tint);
-  --type-deep: var(--color-steel-deep);
-}
-.card--fairy, .card__type--fairy {
-  --type-tint: var(--color-fairy-tint);
-  --type-deep: var(--color-fairy-deep);
-}
 .footer {
   @media (width >= 48rem) {
     position: sticky;
@@ -1025,6 +953,78 @@
   .footer__source {
     text-align: right;
   }
+}
+[data-type="normal"] {
+  --type-tint: var(--color-normal-tint);
+  --type-deep: var(--color-normal-deep);
+}
+[data-type="fire"] {
+  --type-tint: var(--color-fire-tint);
+  --type-deep: var(--color-fire-deep);
+}
+[data-type="water"] {
+  --type-tint: var(--color-water-tint);
+  --type-deep: var(--color-water-deep);
+}
+[data-type="electric"] {
+  --type-tint: var(--color-electric-tint);
+  --type-deep: var(--color-electric-deep);
+}
+[data-type="grass"] {
+  --type-tint: var(--color-grass-tint);
+  --type-deep: var(--color-grass-deep);
+}
+[data-type="ice"] {
+  --type-tint: var(--color-ice-tint);
+  --type-deep: var(--color-ice-deep);
+}
+[data-type="fighting"] {
+  --type-tint: var(--color-fighting-tint);
+  --type-deep: var(--color-fighting-deep);
+}
+[data-type="poison"] {
+  --type-tint: var(--color-poison-tint);
+  --type-deep: var(--color-poison-deep);
+}
+[data-type="ground"] {
+  --type-tint: var(--color-ground-tint);
+  --type-deep: var(--color-ground-deep);
+}
+[data-type="flying"] {
+  --type-tint: var(--color-flying-tint);
+  --type-deep: var(--color-flying-deep);
+}
+[data-type="psychic"] {
+  --type-tint: var(--color-psychic-tint);
+  --type-deep: var(--color-psychic-deep);
+}
+[data-type="bug"] {
+  --type-tint: var(--color-bug-tint);
+  --type-deep: var(--color-bug-deep);
+}
+[data-type="rock"] {
+  --type-tint: var(--color-rock-tint);
+  --type-deep: var(--color-rock-deep);
+}
+[data-type="ghost"] {
+  --type-tint: var(--color-ghost-tint);
+  --type-deep: var(--color-ghost-deep);
+}
+[data-type="dragon"] {
+  --type-tint: var(--color-dragon-tint);
+  --type-deep: var(--color-dragon-deep);
+}
+[data-type="dark"] {
+  --type-tint: var(--color-dark-tint);
+  --type-deep: var(--color-dark-deep);
+}
+[data-type="steel"] {
+  --type-tint: var(--color-steel-tint);
+  --type-deep: var(--color-steel-deep);
+}
+[data-type="fairy"] {
+  --type-tint: var(--color-fairy-tint);
+  --type-deep: var(--color-fairy-deep);
 }
 @font-face {
   font-family: "Unbounded";

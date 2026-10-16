@@ -13,7 +13,6 @@ export function renderPokemonList(pokemons, clear = false) {
 
 export function rerenderCards() {
   const cards = pokemonList.querySelectorAll(".card__open");
-
   const ids = [...cards].map((card) => Number(card.dataset.pokemonId));
   if (!ids.length) return;
 
@@ -31,7 +30,7 @@ function createCardHtml(pokemon) {
     .join("");
 
   return `
-    <li class="card card--${pokemon.types[0].type.name}">
+    <li class="card" data-type="${pokemon.types[0].type.name}">
       <button
         class="card__open"
         data-id="card"
@@ -66,5 +65,5 @@ function createCardHtml(pokemon) {
 }
 
 function createTypeHtml(typeName) {
-  return `<span class="card__type card__type--${typeName}">${translate(typeName)}</span>`;
+  return `<span class="card__type" data-type="${typeName}">${translate(typeName)}</span>`;
 }
