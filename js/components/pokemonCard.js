@@ -12,6 +12,7 @@ export function renderPokemonList(pokemons, clear = false) {
     .join("");
 
   pokemonList.insertAdjacentHTML("beforeend", cardsHtml);
+  pokemonList.classList.remove("card-list--loading");
 }
 
 export function rerenderCards() {
