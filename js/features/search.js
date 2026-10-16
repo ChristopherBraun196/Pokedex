@@ -34,7 +34,7 @@ function updateSearchButtons(query) {
   resetSearchBtn.classList.toggle("hidden", query.length < 3);
 }
 
-function resetSearch() {
+export function resetSearch() {
   searchInput.value = "";
   resetSearchBtn.classList.add("hidden");
   loadMoreBtn.classList.remove("hidden");

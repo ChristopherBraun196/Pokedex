@@ -1,5 +1,6 @@
 import { REGIONS } from "../data/regions.js";
 import { switchRegion } from "../data/data.js";
+import { resetSearch } from "./search.js";
 
 const regionNav = document.querySelector("#regionNav");
 
@@ -13,6 +14,7 @@ export function initRegions() {
 function handleRegionClick(event) {
   const button = event.target.closest(".regionBtn");
   if (!button) return;
+  resetSearch();
   switchRegion(button.dataset.region);
 }
 
