@@ -1,12 +1,30 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+  font-family: "Unbounded";
+  src: url("../assets/fonts/Unbounded/Unbounded-VariableFont_wght.woff2")
+    format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("../assets/fonts/Figtree/Figtree-VariableFont_wght.woff2")
+    format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
 @theme {
   --color-ground: #eef1f6;
   --color-surface: #ffffff;
   --color-ink: #14161f;
   --color-muted: #4a4f5e;
   --color-brand: #c81e32;
+  --font-display: "Unbounded", sans-serif;
+  --font-body: "Figtree", sans-serif;
 }
 
 .dark {
@@ -17,5 +35,5 @@
 }
 
 body {
-  @apply bg-ground text-ink;
+  @apply bg-ground text-ink font-body;
 }

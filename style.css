@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Lugarismo";
   scroll-behavior: smooth;
 }
 
@@ -19,11 +18,6 @@ main {
 body:has(.example-dialog[open]) {
   /* Poof! No more scrolling! */
   overflow: hidden;
-}
-
-@font-face {
-  font-family: "Lugarismo";
-  src: url(./font/Lugrasimo/Lugrasimo-Regular.ttf);
 }
 
 h1 {

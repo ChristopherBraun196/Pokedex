@@ -8,12 +8,11 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-slate-100: oklch(96.8% 0.007 247.896);
-    --color-slate-900: oklch(20.8% 0.042 265.755);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --color-ground: #eef1f6;
     --color-ink: #14161f;
+    --font-body: "Figtree", sans-serif;
   }
 }
 @layer base {
@@ -197,6 +196,18 @@
     border-width: 1px;
   }
 }
+@font-face {
+  font-family: "Unbounded";
+  src: url("../assets/fonts/Unbounded/Unbounded-VariableFont_wght.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("../assets/fonts/Figtree/Figtree-VariableFont_wght.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
 .dark {
   --color-ground: #12141c;
   --color-surface: #1e2230;
@@ -205,6 +216,7 @@
 }
 body {
   background-color: var(--color-ground);
+  font-family: var(--font-body);
   color: var(--color-ink);
 }
 @property --tw-rotate-x {
