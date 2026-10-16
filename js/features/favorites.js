@@ -2,7 +2,6 @@ import { allPokemons, loadPokemonById } from "../data/data.js";
 import { renderPokemonList } from "../components/pokemonCard.js";
 
 const STORAGE_KEY = "favoritePokemonIds";
-const pokemonList = document.querySelector("#loadPokemon");
 const showAllBtn = document.querySelector("#showAllBtn");
 const showFavoritesBtn = document.querySelector("#showFavoritesBtn");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
@@ -11,7 +10,7 @@ const favoriteCount = document.querySelector("#favoriteCount");
 let favoriteIds = loadFavoriteIds();
 
 export function initFavorites() {
-  pokemonList.addEventListener("click", handleFavoriteClick);
+  document.addEventListener("click", handleFavoriteClick);
   showAllBtn.addEventListener("click", showAll);
   showFavoritesBtn.addEventListener("click", showFavorites);
   updateFavoriteCount();
@@ -41,12 +40,12 @@ export function toggleFavorite(pokemonId) {
 }
 
 function handleFavoriteClick(event) {
-  const button = event.target.closest(".card__favorite");
+  const button = event.target.closest(".card__favorite, .detail__favorite");
   if (!button) return;
 
   const pokemonId = Number(button.dataset.pokemonId);
   toggleFavorite(pokemonId);
-  button.setAttribute("aria-pressed", isFavorite(pokemonId));
+  markFavoriteButtons(pokemonId);
 }
 
 async function showFavorites() {
@@ -76,4 +75,13 @@ function markActiveView(activeButton) {
 
 function updateFavoriteCount() {
   favoriteCount.textContent = favoriteIds.length;
+}
+
+function markFavoriteButtons(pokemonId) {
+  const selector = `.card__favorite[data-pokemon-id="${pokemonId}"], .detail__favorite[data-pokemon-id="${pokemonId}"]`;
+  const buttons = document.querySelectorAll(selector);
+
+  buttons.forEach((button) =>
+    button.setAttribute("aria-pressed", isFavorite(pokemonId)),
+  );
 }

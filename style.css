@@ -15,11 +15,6 @@ main {
   flex: 1;
 }
 
-body:has(.example-dialog[open]) {
-  /* Poof! No more scrolling! */
-  overflow: hidden;
-}
-
 body {
   margin: 0;
   display: flex;
@@ -82,10 +77,6 @@ main {
 
 .NoPush {
   pointer-events: disabled;
-}
-
-.dialogPosition {
-  margin: auto;
 }
 
 .spinner {

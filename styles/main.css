@@ -10,6 +10,7 @@
 @import "./blocks/card.css";
 @import "./blocks/footer.css";
 @import "./blocks/types.css";
+@import "./blocks/detail.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -88,6 +89,8 @@
 }
 
 .dark {
+  color-scheme: dark;
+
   --color-ground: #12141c;
   --color-surface: #1e2230;
   --color-ink: #f2f4f8;
