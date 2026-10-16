@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex | Datenschutz</title>
+    <link rel="icon" type="image/png" href="./assets/img/pokeball.png" />
+    <link rel="stylesheet" href="./styles/build.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__inner">
+        <a class="header__brand" href="./index.html" aria-label="Zurück zum Pokédex">
+          <span class="header__lens" aria-hidden="true"></span>
+          <span class="header__lights" aria-hidden="true">
+            <span class="header__light header__light--red"></span>
+            <span class="header__light header__light--yellow"></span>
+            <span class="header__light header__light--green"></span>
+          </span>
+          <span class="header__title">Pokédex</span>
+        </a>
+
+        <div class="header__actions">
+          <button
+            class="theme-toggle"
+            id="themeToggleBtn"
+            aria-label="Switch to dark mode"
+          >
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--moon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
+            </svg>
+            <svg
+              class="theme-toggle__icon theme-toggle__icon--sun"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="legal">
+      <h1 class="legal__title">Datenschutz&shy;erklärung</h1>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Präambel</h2>
+        <p class="legal__text">
+          Mit der folgenden Datenschutzerklärung möchte ich Sie darüber
+          aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend
+          auch kurz als „Daten“ bezeichnet) ich zu welchen Zwecken und in
+          welchem Umfang verarbeite, wenn Sie diesen Pokédex nutzen. Der Pokédex
+          ist ein privates, nicht kommerzielles Lernprojekt.
+        </p>
+        <p class="legal__text">Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
+        <p class="legal__text">Stand: 16. Oktober 2026</p>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Verantwortlicher</h2>
+        <p class="legal__text">
+          Christopher Braun<br />Cramerstr. 3A<br />55450 Langenlonsheim
+        </p>
+        <p class="legal__text">
+          E-Mail-Adresse:
+          <a class="legal__link" href="mailto:kontakt@christopher-braun-dev.de"
+            >kontakt@christopher-braun-dev.de</a
+          >
+        </p>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Übersicht der Verarbeitungen</h2>
+        <h3 class="legal__subheading">Arten der verarbeiteten Daten</h3>
+        <ul class="legal__list">
+          <li>Nutzungsdaten.</li>
+          <li>Meta-, Kommunikations- und Verfahrensdaten (z. B. IP-Adresse).</li>
+          <li>Protokolldaten.</li>
+          <li>Kontaktdaten und Inhaltsdaten, wenn Sie mir eine E-Mail schreiben.</li>
+        </ul>
+        <h3 class="legal__subheading">Kategorien betroffener Personen</h3>
+        <ul class="legal__list">
+          <li>Nutzer.</li>
+          <li>Kommunikationspartner.</li>
+        </ul>
+        <h3 class="legal__subheading">Zwecke der Verarbeitung</h3>
+        <ul class="legal__list">
+          <li>Bereitstellung des Onlineangebots und Nutzerfreundlichkeit.</li>
+          <li>Anzeige der Pokémon-Daten und -Bilder.</li>
+          <li>Sicherheitsmaßnahmen.</li>
+          <li>Informationstechnische Infrastruktur.</li>
+          <li>Kommunikation.</li>
+        </ul>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Maßgebliche Rechtsgrundlagen</h2>
+        <p class="legal__text">
+          Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der
+          DSGVO, auf deren Basis ich personenbezogene Daten verarbeite. Neben den
+          Regelungen der DSGVO können nationale Datenschutzvorgaben gelten.
+        </p>
+        <ul class="legal__list">
+          <li>
+            <strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</strong>
+            – Die Verarbeitung ist zur Wahrung der berechtigten Interessen des
+            Verantwortlichen oder eines Dritten notwendig, vorausgesetzt, dass
+            die Interessen, Grundrechte und Grundfreiheiten der betroffenen
+            Person nicht überwiegen.
+          </li>
+        </ul>
+        <p class="legal__text">
+          <strong>Nationale Datenschutzregelungen in Deutschland:</strong>
+          Zusätzlich zur DSGVO gelten nationale Regelungen, insbesondere das
+          Bundesdatenschutzgesetz (BDSG) und das
+          Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG).
+        </p>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Bereitstellung des Onlineangebots und Webhosting</h2>
+        <p class="legal__text">
+          Um Ihnen diese Seite ausliefern zu können, verarbeitet mein Webhoster
+          Ihre IP-Adresse und weitere technische Daten, die Ihr Browser beim
+          Aufruf übermittelt. Diese werden in Server-Protokollen gespeichert.
+        </p>
+        <ul class="legal__list">
+          <li>
+            <strong>Verarbeitete Datenarten:</strong> Nutzungsdaten; Meta-,
+            Kommunikations- und Verfahrensdaten; Protokolldaten.
+          </li>
+          <li><strong>Betroffene Personen:</strong> Nutzer.</li>
+          <li>
+            <strong>Rechtsgrundlage:</strong> Berechtigte Interessen (Art. 6
+            Abs. 1 S. 1 lit. f) DSGVO).
+          </li>
+          <li>
+            <strong>ALL-INKL:</strong> Webhoster;
+            <strong>Website:</strong>
+            <a class="legal__link" href="https://all-inkl.com/" target="_blank" rel="noopener"
+              >https://all-inkl.com/</a
+            >; <strong>Datenschutzerklärung:</strong>
+            <a
+              class="legal__link"
+              href="https://all-inkl.com/datenschutzinformationen/"
+              target="_blank"
+              rel="noopener"
+              >https://all-inkl.com/datenschutzinformationen/</a
+            >.
+          </li>
+        </ul>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Abruf der Pokémon-Daten über die PokéAPI</h2>
+        <p class="legal__text">
+          Die Namen, Werte und Bilder der Pokémon sind nicht auf meinem Server
+          gespeichert. Ihr Browser lädt sie direkt beim Benutzen der Seite von
+          der freien Schnittstelle PokéAPI. Die Bilder liegen dort auf den
+          Servern von GitHub. Dabei werden Ihre IP-Adresse und technische Daten
+          Ihres Browsers an diese Anbieter übermittelt, weil ein Abruf sonst
+          technisch nicht möglich ist. Ich erhalte von diesen Abrufen keine
+          Daten.
+        </p>
+        <ul class="legal__list">
+          <li>
+            <strong>Verarbeitete Datenarten:</strong> Nutzungsdaten; Meta-,
+            Kommunikations- und Verfahrensdaten.
+          </li>
+          <li><strong>Betroffene Personen:</strong> Nutzer.</li>
+          <li>
+            <strong>Zweck:</strong> Anzeige der Pokémon-Daten und -Bilder.
+          </li>
+          <li>
+            <strong>Rechtsgrundlage:</strong> Berechtigte Interessen (Art. 6
+            Abs. 1 S. 1 lit. f) DSGVO). Mein Interesse liegt darin, die Inhalte
+            des Pokédex anzeigen zu können.
+          </li>
+          <li>
+            <strong>PokéAPI:</strong>
+            <a class="legal__link" href="https://pokeapi.co/" target="_blank" rel="noopener"
+              >https://pokeapi.co/</a
+            >
+          </li>
+          <li>
+            <strong>GitHub (Bilder):</strong> GitHub, Inc., USA;
+            <strong>Datenschutzerklärung:</strong>
+            <a
+              class="legal__link"
+              href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement"
+              target="_blank"
+              rel="noopener"
+              >GitHub General Privacy Statement</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Internationale Datentransfers</h2>
+        <p class="legal__text">
+          Beim Abruf der Pokémon-Daten können Daten an Server in Drittländern,
+          insbesondere in den USA, übermittelt werden. Für Übermittlungen in die
+          USA stützt sich dies vorrangig auf das Data Privacy Framework (DPF).
+          Weitere Informationen finden Sie unter
+          <a
+            class="legal__link"
+            href="https://www.dataprivacyframework.gov/"
+            target="_blank"
+            rel="noopener"
+            >https://www.dataprivacyframework.gov/</a
+          >.
+        </p>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Speicherung im Browser (localStorage)</h2>
+        <p class="legal__text">
+          Damit der Pokédex sich Ihre Einstellungen merkt, speichert er drei
+          Angaben im lokalen Speicher Ihres Browsers (localStorage):
+        </p>
+        <ul class="legal__list">
+          <li>Ihre Favoriten (die Nummern der markierten Pokémon),</li>
+          <li>die gewählte Sprache (Deutsch oder Englisch),</li>
+          <li>die gewählte Darstellung (hell oder dunkel).</li>
+        </ul>
+        <p class="legal__text">
+          Diese Angaben bleiben ausschließlich auf Ihrem Gerät. Sie werden
+          nicht an mich oder an Dritte übertragen und nicht zur Analyse oder
+          Werbung genutzt. Sie können sie jederzeit löschen, indem Sie in Ihrem
+          Browser die Website-Daten dieser Seite entfernen.
+        </p>
+        <p class="legal__text">
+          <strong>Rechtsgrundlage:</strong> § 25 Abs. 2 Nr. 2 TDDDG, da die
+          Speicherung unbedingt erforderlich ist, um die von Ihnen
+          ausdrücklich gewünschten Funktionen bereitzustellen.
+        </p>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Kontaktaufnahme per E-Mail</h2>
+        <p class="legal__text">
+          Wenn Sie mir eine E-Mail schreiben, verarbeite ich Ihre Angaben, um
+          Ihre Anfrage zu beantworten. Rechtsgrundlage sind meine berechtigten
+          Interessen an der Beantwortung (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).
+          Die Daten werden gelöscht, sobald sie dafür nicht mehr erforderlich
+          sind.
+        </p>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Sicherheitsmaßnahmen</h2>
+        <p class="legal__text">
+          Ich treffe nach Maßgabe der gesetzlichen Vorgaben geeignete technische
+          und organisatorische Maßnahmen, um ein dem Risiko angemessenes
+          Schutzniveau zu gewährleisten. Die Verbindung zu dieser Seite ist
+          durch TLS-/SSL-Verschlüsselung (HTTPS) gesichert.
+        </p>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Rechte der betroffenen Personen</h2>
+        <p class="legal__text">
+          Ihnen stehen nach der DSGVO verschiedene Rechte zu, die sich
+          insbesondere aus Art. 15 bis 21 DSGVO ergeben:
+        </p>
+        <ul class="legal__list">
+          <li>
+            <strong>Widerspruchsrecht:</strong> Sie haben das Recht, aus
+            Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit
+            gegen die Verarbeitung der Sie betreffenden Daten Widerspruch
+            einzulegen.
+          </li>
+          <li>
+            <strong>Auskunftsrecht:</strong> Sie haben das Recht, eine
+            Bestätigung darüber zu verlangen, ob Sie betreffende Daten
+            verarbeitet werden, und auf Auskunft über diese Daten.
+          </li>
+          <li>
+            <strong>Recht auf Berichtigung:</strong> Sie haben das Recht, die
+            Vervollständigung oder Berichtigung der Sie betreffenden Daten zu
+            verlangen.
+          </li>
+          <li>
+            <strong>Recht auf Löschung und Einschränkung der Verarbeitung:</strong>
+            Sie haben das Recht, zu verlangen, dass Sie betreffende Daten
+            unverzüglich gelöscht werden.
+          </li>
+          <li>
+            <strong>Recht auf Datenübertragbarkeit:</strong> Sie haben das
+            Recht, Sie betreffende Daten in einem strukturierten, gängigen und
+            maschinenlesbaren Format zu erhalten.
+          </li>
+          <li>
+            <strong>Beschwerde bei der Aufsichtsbehörde:</strong> Sie haben das
+            Recht auf Beschwerde bei einer Aufsichtsbehörde.
+          </li>
+        </ul>
+        <p class="legal__text">Zuständige Aufsichtsbehörde:</p>
+        <p class="legal__text">
+          Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit
+          Rheinland-Pfalz<br />Hintere Bleiche 34<br />55116 Mainz<br />Telefon:
+          06131 8920-0<br />E-Mail:
+          <a class="legal__link" href="mailto:poststelle@datenschutz.rlp.de"
+            >poststelle@datenschutz.rlp.de</a
+          ><br />Website:
+          <a
+            class="legal__link"
+            href="https://www.datenschutz.rlp.de"
+            target="_blank"
+            rel="noopener"
+            >https://www.datenschutz.rlp.de</a
+          >
+        </p>
+      </section>
+
+      <section class="legal__section">
+        <h2 class="legal__heading">Änderung und Aktualisierung</h2>
+        <p class="legal__text">
+          Ich passe diese Datenschutzerklärung an, sobald Änderungen an den
+          Datenverarbeitungen dies erforderlich machen.
+        </p>
+      </section>
+
+      <p class="legal__note">
+        <a
+          class="legal__link"
+          href="https://datenschutz-generator.de/"
+          title="Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken."
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          >Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas
+          Schwenke</a
+        >
+      </p>
+
+      <a class="legal__back" href="./index.html">Zurück zum Pokédex</a>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <span class="footer__credit">Erstellt von Christopher Braun · 2026</span>
+        <nav class="footer__links" aria-label="Rechtliches">
+          <a class="footer__link" href="./impressum.html">Impressum</a>
+          <a class="footer__link" href="./datenschutz.html" aria-current="page"
+            >Datenschutz</a
+          >
+        </nav>
+        <span class="footer__source">
+          Daten von der
+          <a
+            class="footer__link footer__link--accent"
+            href="https://pokeapi.co"
+            target="_blank"
+            rel="noopener"
+            >PokéAPI</a
+          >
+        </span>
+      </div>
+    </footer>
+
+    <script src="./js/legal.js" type="module"></script>
+  </body>
+</html>

@@ -1715,9 +1715,35 @@ body:has(.detail[open]) {
   --tw-font-weight: var(--font-weight-medium);
   font-weight: var(--font-weight-medium);
 }
+.legal__subheading {
+  margin-top: calc(var(--spacing) * 2);
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+}
 .legal__text {
   --tw-leading: var(--leading-relaxed);
   line-height: var(--leading-relaxed);
+}
+.legal__list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 1.5);
+  padding-left: calc(var(--spacing) * 5);
+  list-style-type: disc;
+  --tw-leading: var(--leading-relaxed);
+  line-height: var(--leading-relaxed);
+  & *::marker {
+    color: var(--color-muted);
+  }
+  &::marker {
+    color: var(--color-muted);
+  }
+  & *::-webkit-details-marker {
+    color: var(--color-muted);
+  }
+  &::-webkit-details-marker {
+    color: var(--color-muted);
+  }
 }
 .legal__note {
   font-size: var(--text-sm);

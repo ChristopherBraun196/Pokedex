@@ -16,8 +16,19 @@
   @apply font-display text-lg font-medium;
 }
 
+.legal__subheading {
+  @apply mt-2;
+  @apply font-bold;
+}
+
 .legal__text {
   @apply leading-relaxed;
+}
+
+.legal__list {
+  @apply flex flex-col gap-1.5;
+  @apply pl-5;
+  @apply list-disc leading-relaxed marker:text-muted;
 }
 
 .legal__note {
