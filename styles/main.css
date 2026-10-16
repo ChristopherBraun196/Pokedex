@@ -1,8 +1,10 @@
 @import "tailwindcss";
+@import "./blocks/top-bar.css";
 @import "./blocks/header.css";
 @import "./blocks/search.css";
 @import "./blocks/switch.css";
 @import "./blocks/theme-toggle.css";
+@import "./blocks/toolbar.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

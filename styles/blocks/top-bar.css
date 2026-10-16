@@ -1,0 +1,3 @@
+.top-bar {
+  @apply sticky top-0 z-10;
+}
