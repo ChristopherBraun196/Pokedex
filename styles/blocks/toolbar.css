@@ -7,7 +7,3 @@
   @apply mx-auto max-w-7xl;
   @apply p-4 md:px-8 md:py-5;
 }
-
-.toolbar__regions {
-  @apply flex flex-wrap gap-2;
-}

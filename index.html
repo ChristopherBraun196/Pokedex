@@ -105,11 +105,25 @@
       </header>
       <div class="toolbar">
         <div class="toolbar__inner">
-          <nav
-            class="toolbar__regions"
-            id="regionNav"
-            aria-label="Region"
-          ></nav>
+          <div class="regions">
+            <button
+              class="regions__toggle"
+              id="regionToggle"
+              aria-expanded="false"
+              aria-controls="regionNav"
+            >
+              <span class="regions__label">Region</span>
+              <span class="regions__current" id="regionCurrent">Kanto</span>
+              <svg
+                class="regions__chevron"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <nav class="regions__list" id="regionNav" aria-label="Region"></nav>
+          </div>
 
           <div class="switch switch--light" role="group" aria-label="View">
             <button

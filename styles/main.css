@@ -5,6 +5,7 @@
 @import "./blocks/switch.css";
 @import "./blocks/theme-toggle.css";
 @import "./blocks/toolbar.css";
+@import "./blocks/regions.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
