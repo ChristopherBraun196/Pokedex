@@ -114,9 +114,11 @@ export async function loadEvolutionChain(pokemon) {
   const evolution = await fetchJson(species.evolution_chain.url);
 
   const ids = getLineIds(evolution.chain, pokemon.id);
+  const triggers = getEvolutionTriggers(evolution.chain);
 
   const promises = ids.map((id) => loadPokemonById(id));
-  return Promise.all(promises);
+  const evolutions = await Promise.all(promises);
+  return evolutions.map((evo) => ({ ...evo, trigger: triggers[evo.id] }));
 }
 
 function getLineIds(chain, pokemonId) {
@@ -153,6 +155,24 @@ function getEvolutionIds(chain) {
   }
 
   return ids;
+}
+
+function getEvolutionTriggers(chain) {
+  const triggers = {};
+  const open = [chain];
+
+  while (open.length > 0) {
+    const current = open.shift();
+    const details = current.evolution_details[0];
+
+    triggers[getIdFromUrl(current.species.url)] = {
+      level: details?.min_level ?? null,
+      item: details?.item?.name ?? null,
+    };
+    open.push(...current.evolves_to);
+  }
+
+  return triggers;
 }
 
 function getIdFromUrl(url) {
