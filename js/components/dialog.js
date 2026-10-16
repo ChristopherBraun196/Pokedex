@@ -166,23 +166,50 @@ function formatNumber(value) {
   return value.toLocaleString(document.documentElement.lang);
 }
 
-function createEvolutionListHtml(evolutions, currentId) {
-  if (evolutions.length === 1) {
+function createEvolutionListHtml(evolution, currentId) {
+  const { main, branches } = evolution;
+
+  if (main.length === 1 && branches.length === 0) {
     return `<p class="detail__note">${translate("does-not-evolve")}</p>`;
   }
 
-  return evolutions
-    .map((evo, index) => createEvolutionHtml(evo, index, currentId))
+  return `
+    <div class="detail__evo-main">${createStagesHtml(main, currentId, false)}</div>
+    ${createBranchesHtml(branches, currentId)}
+  `;
+}
+
+function createBranchesHtml(branches, currentId) {
+  if (branches.length === 0) return "";
+
+  const branchesHtml = branches
+    .map(
+      (stages) =>
+        `<div class="detail__branch">${createStagesHtml(stages, currentId, true)}</div>`,
+    )
+    .join("");
+  const gridClass = branches.every((stages) => stages.length === 1)
+    ? " detail__branches--grid"
+    : "";
+  return `<div class="detail__branches${gridClass}">${branchesHtml}</div>`;
+}
+
+function createStagesHtml(stages, currentId, isBranch) {
+  return stages
+    .map((evo, index) =>
+      createEvolutionHtml(evo, index > 0 || isBranch, currentId, isBranch),
+    )
     .join("");
 }
 
-function createEvolutionHtml(evo, index, currentId) {
-  const triggerHtml = index > 0 ? createTriggerHtml(evo.trigger) : "";
+function createEvolutionHtml(evo, showTrigger, currentId, isSmall) {
+  const triggerHtml = showTrigger ? createTriggerHtml(evo.trigger) : "";
   const currentClass = evo.id === currentId ? " detail__evo--current" : "";
+  const sizeClass = isSmall ? " detail__evo--small" : "";
 
   return `
     ${triggerHtml}
-    <div class="detail__evo${currentClass}" data-type="${evo.types[0].type.name}">
+    <div class="detail__evo${currentClass}${sizeClass}" data-type="${evo.types[0].type.name}">
       <img
         class="detail__evo-image"
         src="${evo.artwork}"
@@ -209,6 +236,14 @@ function createTriggerHtml(trigger) {
 
 function formatTrigger(trigger) {
   if (trigger?.level) return `Lv. ${trigger.level}`;
-  if (trigger?.item) return trigger.item.replace("-", " ");
+  if (trigger?.item)
+    return translate(trigger.item) ?? trigger.item.replace("-", " ");
+  if (trigger?.friendship) return formatFriendship(trigger.time);
+  if (trigger?.trade) return translate("trade");
   return "";
+}
+
+function formatFriendship(time) {
+  if (!time) return translate("friendship");
+  return `${translate("friendship")}, ${translate(time)}`;
 }

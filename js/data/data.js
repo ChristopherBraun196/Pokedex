@@ -121,21 +121,13 @@ export function getPokemonById(pokemonId) {
 export async function loadEvolutionChain(pokemon) {
   const species = await fetchJson(pokemon.species.url);
   const evolution = await fetchJson(species.evolution_chain.url);
+  const line = getLine(evolution.chain, pokemon.id);
 
-  const ids = getLineIds(evolution.chain, pokemon.id);
-  const triggers = getEvolutionTriggers(evolution.chain);
-
-  const promises = ids.map((id) => loadPokemonById(id));
-  const evolutions = await Promise.all(promises);
-  return evolutions.map((evo) => ({ ...evo, trigger: triggers[evo.id] }));
-}
-
-function getLineIds(chain, pokemonId) {
-  const path = findPathTo(chain, pokemonId);
-  const ancestors = path.slice(0, -1);
-  const ancestorIds = ancestors.map((box) => getIdFromUrl(box.species.url));
-
-  return [...ancestorIds, ...getEvolutionIds(path.at(-1))];
+  const main = await loadStages(line.main);
+  const branches = await Promise.all(
+    line.branches.map((boxes) => loadStages(boxes)),
+  );
+  return { main, branches };
 }
 
 function findPathTo(chain, pokemonId) {
@@ -153,39 +145,54 @@ function findPathTo(chain, pokemonId) {
   return [chain];
 }
 
-function getEvolutionIds(chain) {
-  const ids = [];
-  const open = [chain];
-
-  while (open.length > 0) {
-    const current = open.shift();
-    ids.push(getIdFromUrl(current.species.url));
-    open.push(...current.evolves_to);
-  }
-
-  return ids;
-}
-
-function getEvolutionTriggers(chain) {
-  const triggers = {};
-  const open = [chain];
-
-  while (open.length > 0) {
-    const current = open.shift();
-    const details = current.evolution_details[0];
-
-    triggers[getIdFromUrl(current.species.url)] = {
-      level: details?.min_level ?? null,
-      item: details?.item?.name ?? null,
-    };
-    open.push(...current.evolves_to);
-  }
-
-  return triggers;
-}
-
 function getIdFromUrl(url) {
   return Number(url.split("/").at(-2));
+}
+
+function getLine(chain, pokemonId) {
+  const main = findPathTo(chain, pokemonId);
+  let current = main.at(-1);
+
+  while (current.evolves_to.length === 1) {
+    current = current.evolves_to[0];
+    main.push(current);
+  }
+
+  const branches = current.evolves_to.map((box) => getStraightLine(box));
+  return { main, branches };
+}
+
+function getStraightLine(box) {
+  const boxes = [box];
+
+  while (boxes.at(-1).evolves_to.length > 0) {
+    boxes.push(boxes.at(-1).evolves_to[0]);
+  }
+  return boxes;
+}
+
+function loadStages(boxes) {
+  return Promise.all(boxes.map((box) => loadStage(box)));
+}
+
+async function loadStage(box) {
+  const pokemon = await loadPokemonById(getIdFromUrl(box.species.url));
+  return { ...pokemon, trigger: getTrigger(box) };
+}
+
+function getTrigger(box) {
+  const details = box.evolution_details;
+  const first = details[0];
+
+  return {
+    level: first?.min_level ?? null,
+    item: details.find((detail) => detail.item)?.item.name ?? null,
+    friendship: details.some(
+      (detail) => detail.min_happiness || detail.min_affection,
+    ),
+    time: first?.time_of_day || null,
+    trade: first?.trigger.name === "trade",
+  };
 }
 
 export function switchRegion(regionName) {
