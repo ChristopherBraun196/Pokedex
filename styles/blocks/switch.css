@@ -3,8 +3,24 @@
 }
 
 .switch__button {
+  @apply flex items-center justify-center gap-2;
   @apply h-11 min-w-13;
   @apply px-3.5;
   @apply cursor-pointer rounded-full font-bold text-white;
   @apply focus-visible:outline-3 focus-visible:outline-lens aria-pressed:bg-white aria-pressed:text-outline;
+}
+
+.switch--light {
+  @apply w-full md:w-auto;
+  @apply bg-surface p-1.5 gap-2;
+}
+
+.switch--light .switch__button {
+  @apply flex-1 md:flex-none;
+  @apply px-5;
+  @apply text-ink aria-pressed:bg-ink aria-pressed:text-ground;
+}
+
+.switch__icon {
+  @apply size-4.5 fill-current;
 }
