@@ -1,0 +1,32 @@
+.footer {
+  @apply md:sticky md:bottom-0 md:z-10;
+  @apply bg-outline text-white;
+}
+
+.footer__inner {
+  @apply flex flex-col items-center gap-2 md:grid md:grid-cols-3;
+  @apply mx-auto max-w-7xl;
+  @apply px-4 py-5 md:px-8;
+  @apply text-center text-[15px];
+}
+
+.footer__credit {
+  @apply md:text-left;
+}
+
+.footer__links {
+  @apply flex justify-center gap-4;
+}
+
+.footer__link {
+  @apply font-semibold text-white motion-safe:transition-colors;
+  @apply hover:text-accent focus-visible:outline-3 focus-visible:outline-lens;
+}
+
+.footer__link--accent {
+  @apply text-accent hover:text-accent-light;
+}
+
+.footer__source {
+  @apply md:text-right;
+}

@@ -1,0 +1,49 @@
+.legal {
+  @apply flex flex-col gap-8;
+  @apply mx-auto w-full max-w-3xl;
+  @apply px-4 py-10 md:px-8 md:py-14;
+}
+
+.legal__title {
+  @apply font-display text-3xl font-bold md:text-4xl;
+}
+
+.legal__section {
+  @apply flex flex-col gap-2;
+}
+
+.legal__heading {
+  @apply font-display text-lg font-medium;
+}
+
+.legal__subheading {
+  @apply mt-2;
+  @apply font-bold;
+}
+
+.legal__text {
+  @apply leading-relaxed;
+}
+
+.legal__list {
+  @apply flex flex-col gap-1.5;
+  @apply pl-5;
+  @apply list-disc leading-relaxed marker:text-muted;
+}
+
+.legal__note {
+  @apply text-sm text-muted;
+}
+
+.legal__link {
+  @apply font-semibold underline underline-offset-4;
+  @apply hover:text-brand focus-visible:outline-3 focus-visible:outline-lens;
+}
+
+.legal__back {
+  @apply flex items-center justify-center self-start;
+  @apply h-13;
+  @apply px-8;
+  @apply rounded-full bg-ink font-bold text-ground motion-safe:transition;
+  @apply hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-lens;
+}

@@ -6,7 +6,7 @@ export let pokemonNamesList = [];
 
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
 const POKEMONS_PER_PAGE = 20;
-const MIN_LOADING_TIME = 650;
+const MIN_LOADING_TIME = 1200;
 
 const pokemonCache = {};
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
@@ -24,7 +24,8 @@ export function initData() {
 
 async function loadFirstPokemons() {
   try {
-    await loadNextPokemons();
+    const newPokemons = await loadNextPokemons();
+    showPokemons(newPokemons);
   } catch (error) {
     console.error(error);
     loadError.classList.remove("hidden");
@@ -51,6 +52,10 @@ async function loadNextPokemons() {
   const promises = data.results.map((pokemon) => loadOnePokemon(pokemon.url));
 
   const newPokemons = await Promise.all(promises);
+  return newPokemons;
+}
+
+function showPokemons(newPokemons) {
   allPokemons.push(...newPokemons);
 
   renderPokemonList(newPokemons, offset === 0);
@@ -63,7 +68,11 @@ async function handleLoadMoreClick() {
   loadError.classList.add("hidden");
 
   try {
-    await Promise.all([loadNextPokemons(), wait(MIN_LOADING_TIME)]);
+    const [newPokemons] = await Promise.all([
+      loadNextPokemons(),
+      wait(MIN_LOADING_TIME),
+    ]);
+    showPokemons(newPokemons);
   } catch (error) {
     console.error(error);
     offset -= POKEMONS_PER_PAGE;
@@ -112,19 +121,13 @@ export function getPokemonById(pokemonId) {
 export async function loadEvolutionChain(pokemon) {
   const species = await fetchJson(pokemon.species.url);
   const evolution = await fetchJson(species.evolution_chain.url);
+  const line = getLine(evolution.chain, pokemon.id);
 
-  const ids = getLineIds(evolution.chain, pokemon.id);
-
-  const promises = ids.map((id) => loadPokemonById(id));
-  return Promise.all(promises);
-}
-
-function getLineIds(chain, pokemonId) {
-  const path = findPathTo(chain, pokemonId);
-  const ancestors = path.slice(0, -1);
-  const ancestorIds = ancestors.map((box) => getIdFromUrl(box.species.url));
-
-  return [...ancestorIds, ...getEvolutionIds(path.at(-1))];
+  const main = await loadStages(line.main);
+  const branches = await Promise.all(
+    line.branches.map((boxes) => loadStages(boxes)),
+  );
+  return { main, branches };
 }
 
 function findPathTo(chain, pokemonId) {
@@ -142,21 +145,54 @@ function findPathTo(chain, pokemonId) {
   return [chain];
 }
 
-function getEvolutionIds(chain) {
-  const ids = [];
-  const open = [chain];
-
-  while (open.length > 0) {
-    const current = open.shift();
-    ids.push(getIdFromUrl(current.species.url));
-    open.push(...current.evolves_to);
-  }
-
-  return ids;
-}
-
 function getIdFromUrl(url) {
   return Number(url.split("/").at(-2));
+}
+
+function getLine(chain, pokemonId) {
+  const main = findPathTo(chain, pokemonId);
+  let current = main.at(-1);
+
+  while (current.evolves_to.length === 1) {
+    current = current.evolves_to[0];
+    main.push(current);
+  }
+
+  const branches = current.evolves_to.map((box) => getStraightLine(box));
+  return { main, branches };
+}
+
+function getStraightLine(box) {
+  const boxes = [box];
+
+  while (boxes.at(-1).evolves_to.length > 0) {
+    boxes.push(boxes.at(-1).evolves_to[0]);
+  }
+  return boxes;
+}
+
+function loadStages(boxes) {
+  return Promise.all(boxes.map((box) => loadStage(box)));
+}
+
+async function loadStage(box) {
+  const pokemon = await loadPokemonById(getIdFromUrl(box.species.url));
+  return { ...pokemon, trigger: getTrigger(box) };
+}
+
+function getTrigger(box) {
+  const details = box.evolution_details;
+  const first = details[0];
+
+  return {
+    level: first?.min_level ?? null,
+    item: details.find((detail) => detail.item)?.item.name ?? null,
+    friendship: details.some(
+      (detail) => detail.min_happiness || detail.min_affection,
+    ),
+    time: first?.time_of_day || null,
+    trade: first?.trigger.name === "trade",
+  };
 }
 
 export function switchRegion(regionName) {

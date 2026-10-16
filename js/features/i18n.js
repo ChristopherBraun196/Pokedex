@@ -22,7 +22,8 @@ export function translate(key) {
 }
 
 function handleLanguageClick(event) {
-  const button = event.target.closest(".languageBtn");
+  const button = event.target.closest(".switch__button");
+
   if (!button) return;
   setLanguage(button.dataset.lang);
   rerenderCards();
@@ -38,6 +39,7 @@ function setLanguage(language) {
   localStorage.setItem(STORAGE_KEY, language);
   document.documentElement.lang = language;
   translateTexts(language);
+  markActiveLanguage(language);
 }
 
 function translateTexts(language) {
@@ -49,4 +51,12 @@ function translateTexts(language) {
   document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
     element.placeholder = texts[element.dataset.i18nPlaceholder];
   });
+}
+
+function markActiveLanguage(language) {
+  const buttons = languageSwitch.querySelectorAll(".switch__button");
+
+  buttons.forEach((button) =>
+    button.setAttribute("aria-pressed", button.dataset.lang === language),
+  );
 }

@@ -1,0 +1,9 @@
+.toolbar {
+  @apply bg-ground;
+}
+
+.toolbar__inner {
+  @apply flex flex-wrap items-center justify-between gap-3;
+  @apply mx-auto max-w-7xl;
+  @apply p-4 md:px-8 md:py-5;
+}

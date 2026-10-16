@@ -9,6 +9,7 @@ const resetSearchBtn = document.querySelector("#resetSearchBtn");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
 const pokemonList = document.querySelector("#loadPokemon");
 const loadError = document.querySelector("#loadError");
+const notFound = document.querySelector("#notFound");
 
 export function initSearch() {
   searchInput.addEventListener("keyup", searchPokemon);
@@ -19,6 +20,7 @@ export function initSearch() {
 async function searchPokemon() {
   const query = searchInput.value.toLowerCase();
   loadError.classList.add("hidden");
+  notFound.classList.add("hidden");
 
   updateSearchButtons(query);
 
@@ -43,6 +45,7 @@ export function resetSearch() {
   renderPokemonList(allPokemons, true);
   searchBtn.disabled = true;
   loadError.classList.add("hidden");
+  notFound.classList.add("hidden");
 }
 
 function findMatches(query) {
@@ -58,11 +61,9 @@ function matchesQuery(entry, query) {
 }
 
 function renderNoResults(query) {
-  const message = document.createElement("p");
-  message.className = "no-found";
-  message.dataset.id = "not-found";
-  message.textContent = `${translate("no-results")} '${query}'.`;
-  pokemonList.replaceChildren(message);
+  pokemonList.innerHTML = "";
+  notFound.textContent = `${translate("no-results")} '${query}'.`;
+  notFound.classList.remove("hidden");
 }
 
 async function renderMatches(matches) {

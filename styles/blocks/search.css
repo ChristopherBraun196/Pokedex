@@ -1,0 +1,26 @@
+.search {
+  @apply flex items-center gap-2 order-2 grow basis-48 md:order-0 md:grow-0 md:basis-auto;
+  @apply h-12 min-w-0 md:w-90;
+  @apply pr-1.5 pl-4.5;
+  @apply rounded-full border-3 border-outline bg-surface;
+  @apply focus-within:ring-3 focus-within:ring-lens;
+}
+
+.search__input {
+  @apply w-full;
+  @apply bg-transparent text-base text-ink outline-none;
+  @apply placeholder:text-muted;
+}
+
+.search__button {
+  @apply flex shrink-0 items-center justify-center;
+  @apply size-9;
+  @apply cursor-pointer rounded-full bg-ink text-ground;
+  @apply disabled:cursor-not-allowed disabled:opacity-40;
+}
+
+.search__icon {
+  @apply size-5;
+  @apply fill-none stroke-current stroke-[2.5];
+  stroke-linecap: round;
+}

@@ -3,3 +3,5 @@ CLAUDE.md
 .git
 .DS_Store
 node_modules/
+
+.vscode/

@@ -1,0 +1,45 @@
+.card {
+  @apply relative;
+}
+
+.card__open {
+  @apply flex flex-col items-center gap-2 md:gap-3;
+  @apply h-full w-full;
+  @apply p-3 md:p-5;
+  @apply cursor-pointer rounded-2xl bg-(--type-tint) text-(--type-deep) md:rounded-3xl;
+  @apply motion-safe:transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-lens;
+}
+
+.card__number {
+  @apply self-start;
+  @apply font-display text-base font-bold md:text-xl;
+}
+
+.card__image {
+  @apply size-21 object-contain md:size-34;
+}
+
+.card__name {
+  @apply font-display text-sm font-bold text-ink capitalize md:text-lg;
+}
+
+.card__types {
+  @apply flex flex-wrap justify-center gap-2;
+}
+
+.card__type {
+  @apply px-3 py-1;
+  @apply rounded-full bg-(--type-deep) text-xs font-bold text-on-type capitalize md:text-[13px];
+}
+
+.card__favorite {
+  @apply absolute top-2 right-2 flex items-center justify-center md:top-4 md:right-4;
+  @apply size-11;
+  @apply cursor-pointer rounded-full bg-surface fill-none text-heart;
+  @apply aria-pressed:fill-current focus-visible:outline-3 focus-visible:outline-lens;
+}
+
+.card__heart {
+  @apply size-5.5 stroke-current stroke-2;
+  stroke-linejoin: round;
+}
