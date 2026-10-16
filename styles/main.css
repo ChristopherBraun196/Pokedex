@@ -11,6 +11,7 @@
 @import "./blocks/footer.css";
 @import "./blocks/types.css";
 @import "./blocks/detail.css";
+@import "./blocks/list-actions.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -46,6 +47,9 @@
 
   --color-on-type: #ffffff;
   --color-heart: #c81e32;
+
+  --color-error: #9b1c2c;
+  --color-error-tint: #fde7ea;
 
   --color-normal-tint: #e6e5d3;
   --color-normal-deep: #5a5937;
@@ -100,6 +104,9 @@
   --color-on-type: #12141c;
   --color-heart: #ff7a8a;
 
+  --color-error: #ffb3bd;
+  --color-error-tint: #3d1419;
+
   --color-normal-tint: #33321f;
   --color-normal-deep: #d6d4ae;
   --color-fire-tint: #47230b;
@@ -139,5 +146,14 @@
 }
 
 body {
+  @apply flex min-h-screen flex-col;
   @apply bg-ground text-ink font-body;
+}
+
+main {
+  @apply flex-1;
+}
+
+.hidden {
+  display: none !important;
 }

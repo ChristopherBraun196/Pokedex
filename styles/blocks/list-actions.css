@@ -1,0 +1,43 @@
+.list-actions {
+  @apply flex flex-col items-center gap-4;
+  @apply mx-auto w-full max-w-7xl;
+  @apply px-4 pt-2 pb-10 md:px-8 md:pb-14;
+}
+
+.list-actions__button {
+  @apply flex items-center justify-center;
+  @apply h-13;
+  @apply px-8;
+  @apply cursor-pointer rounded-full bg-ink font-bold text-ground motion-safe:transition;
+  @apply hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-3 focus-visible:outline-lens disabled:cursor-not-allowed disabled:opacity-40;
+}
+
+.list-actions__button--secondary {
+  @apply border-3 border-ink bg-surface text-ink;
+}
+
+.list-actions__spinner {
+  @apply relative;
+  @apply size-13;
+  @apply rounded-full border-3 border-outline;
+  @apply animate-spin motion-reduce:[animation-duration:3s];
+  background: linear-gradient(
+    to bottom,
+    var(--color-brand) 0 44%,
+    var(--color-outline) 44% 56%,
+    #ffffff 56% 100%
+  );
+}
+
+.list-actions__spinner::after {
+  content: "";
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  @apply size-4;
+  @apply rounded-full border-3 border-outline bg-white;
+}
+
+.list-actions__error {
+  @apply max-w-md;
+  @apply px-4.5 py-3.5;
+  @apply rounded-2xl bg-error-tint text-center font-semibold text-error;
+}

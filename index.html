@@ -6,7 +6,6 @@
     <title>Pokédex</title>
     <link rel="icon" type="image/png" href="./assets/img/pokeball.png" />
     <link rel="stylesheet" href="./styles/build.css" />
-    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="Background"></div>
@@ -159,30 +158,36 @@
         aria-live="polite"
       ></p>
 
-      <div class="moreButton">
-        <div id="loading-spinner" class="hidden">
-          <div class="spinner"></div>
-        </div>
-        <p data-i18n="load-error" id="loadError" class="hidden">
+      <div class="list-actions">
+        <div
+          class="list-actions__spinner hidden"
+          id="loading-spinner"
+          role="status"
+          aria-label="Loading"
+        ></div>
+        <p
+          class="list-actions__error hidden"
+          data-i18n="load-error"
+          id="loadError"
+        >
           Could not load Pokémon. Please check your connection and try again.
         </p>
         <button
+          class="list-actions__button list-actions__button--secondary hidden"
           data-i18n="reset-search"
           id="resetSearchBtn"
-          class="hidden resetBtn"
           aria-label="Reset search"
         >
           Reset
         </button>
-
         <button
+          class="list-actions__button"
           data-i18n="load-more"
           data-id="load-more-button"
-          aria-label="Load more Pokémon"
           id="loadMoreBtn"
-          class="NoPush loadMoreBtn"
+          aria-label="Load more Pokémon"
         >
-          LoadMore...
+          Load more
         </button>
       </div>
     </main>

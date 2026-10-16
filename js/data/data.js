@@ -6,7 +6,7 @@ export let pokemonNamesList = [];
 
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
 const POKEMONS_PER_PAGE = 20;
-const MIN_LOADING_TIME = 650;
+const MIN_LOADING_TIME = 1200;
 
 const pokemonCache = {};
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
@@ -24,7 +24,8 @@ export function initData() {
 
 async function loadFirstPokemons() {
   try {
-    await loadNextPokemons();
+    const newPokemons = await loadNextPokemons();
+    showPokemons(newPokemons);
   } catch (error) {
     console.error(error);
     loadError.classList.remove("hidden");
@@ -51,6 +52,10 @@ async function loadNextPokemons() {
   const promises = data.results.map((pokemon) => loadOnePokemon(pokemon.url));
 
   const newPokemons = await Promise.all(promises);
+  return newPokemons;
+}
+
+function showPokemons(newPokemons) {
   allPokemons.push(...newPokemons);
 
   renderPokemonList(newPokemons, offset === 0);
@@ -63,7 +68,11 @@ async function handleLoadMoreClick() {
   loadError.classList.add("hidden");
 
   try {
-    await Promise.all([loadNextPokemons(), wait(MIN_LOADING_TIME)]);
+    const [newPokemons] = await Promise.all([
+      loadNextPokemons(),
+      wait(MIN_LOADING_TIME),
+    ]);
+    showPokemons(newPokemons);
   } catch (error) {
     console.error(error);
     offset -= POKEMONS_PER_PAGE;
