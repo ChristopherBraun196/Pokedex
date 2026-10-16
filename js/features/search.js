@@ -1,5 +1,6 @@
 import { allPokemons, pokemonNamesList, loadOnePokemon } from "../data/data.js";
 import { renderPokemonList } from "../components/pokemonCard.js";
+import { translate } from "./i18n.js";
 
 const searchInput = document.querySelector("#search");
 const searchBtn = document.querySelector('[data-id="search-button"]');
@@ -51,7 +52,7 @@ function renderNoResults(query) {
   const message = document.createElement("p");
   message.className = "no-found";
   message.dataset.id = "not-found";
-  message.textContent = `No Pokémon found matching '${query}'.`;
+  message.textContent = `${translate("no-results")} '${query}'.`;
   pokemonList.replaceChildren(message);
 }
 

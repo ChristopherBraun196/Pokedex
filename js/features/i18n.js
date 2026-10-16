@@ -3,9 +3,15 @@ import { TRANSLATIONS } from "../data/translations.js";
 const STORAGE_KEY = "lang";
 const languageSwitch = document.querySelector("#languageSwitch");
 
+let currentLanguage = "en";
+
 export function initLanguage() {
   setLanguage(loadLanguage());
   languageSwitch.addEventListener("click", handleLanguageClick);
+}
+
+export function translate(key) {
+  return TRANSLATIONS[currentLanguage][key];
 }
 
 function handleLanguageClick(event) {
@@ -19,6 +25,8 @@ function loadLanguage() {
 }
 
 function setLanguage(language) {
+  currentLanguage = language;
+
   localStorage.setItem(STORAGE_KEY, language);
   document.documentElement.lang = language;
   translateTexts(language);

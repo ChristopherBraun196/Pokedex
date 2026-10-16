@@ -1,4 +1,5 @@
 import { getPokemonById, loadEvolutionChain } from "../data/data.js";
+import { translate } from "../features/i18n.js";
 
 const dialog = document.querySelector("#openPokemonDialog");
 const pokemonList = document.querySelector("#loadPokemon");
@@ -49,7 +50,7 @@ async function renderEvolution(pokemon) {
     container.innerHTML = createEvolutionListHtml(evolutions);
   } catch (error) {
     console.error(error);
-    container.textContent = "Could not load evolution.";
+    container.textContent = translate("evolution-error");
   }
 }
 
@@ -90,12 +91,12 @@ function createDialogHtml(pokemon) {
         
         <div class="bigCardBody">
             <div class="pokemonStats">
-  <h4>Base Stats</h4>
+  <h4>${translate("base-stats")}</h4>
   ${pokemon.stats
     .map(
       (stat) => `
     <div class="stat-row">
-      <span class="stat-label">${stat.stat.name.toUpperCase()}</span>
+      <span class="stat-label">${translate(stat.stat.name)}</span>
       <span class="stat-value">${stat.base_stat}</span>
       <div class="stat-bar-bg">
         <div class="stat-bar-fill" style="width: ${(stat.base_stat / 150) * 100}%"></div>
@@ -106,7 +107,7 @@ function createDialogHtml(pokemon) {
     )
     .join("")}
 </div>
-      <h4>Evolution</h4>
+      <h4>${translate("evolution")}</h4>
       <div class="evolutionChain"></div>
         </div>
     </div>
@@ -123,7 +124,7 @@ function createEvolutionHtml(pokemon) {
 }
 
 function createEvolutionListHtml(evolutions) {
-  if (evolutions.length === 1) return "Does not evolve";
+  if (evolutions.length === 1) return translate("does-not-evolve");
 
   return evolutions.map((evolution) => createEvolutionHtml(evolution)).join("");
 }
