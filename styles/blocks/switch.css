@@ -3,5 +3,8 @@
 }
 
 .switch__button {
-  @apply h-11 min-w-13 cursor-pointer rounded-full px-3.5 font-bold text-white focus-visible:outline-3 focus-visible:outline-lens aria-pressed:bg-white aria-pressed:text-outline;
+  @apply h-11 min-w-13;
+  @apply px-3.5;
+  @apply cursor-pointer rounded-full font-bold text-white;
+  @apply focus-visible:outline-3 focus-visible:outline-lens aria-pressed:bg-white aria-pressed:text-outline;
 }

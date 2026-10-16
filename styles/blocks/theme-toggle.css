@@ -1,5 +1,8 @@
 .theme-toggle {
-  @apply flex size-12 cursor-pointer items-center justify-center rounded-full bg-outline text-white focus-visible:outline-3 focus-visible:outline-lens;
+  @apply flex items-center justify-center;
+  @apply size-12;
+  @apply cursor-pointer rounded-full bg-outline text-white;
+  @apply focus-visible:outline-3 focus-visible:outline-lens;
 }
 
 .theme-toggle__icon {
