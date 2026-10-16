@@ -1,11 +1,14 @@
 import { allPokemons, loadPokemonById } from "../data/data.js";
 import { renderPokemonList } from "../components/pokemonCard.js";
+import { translate } from "./i18n.js";
 
 const STORAGE_KEY = "favoritePokemonIds";
 const showAllBtn = document.querySelector("#showAllBtn");
 const showFavoritesBtn = document.querySelector("#showFavoritesBtn");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
 const favoriteCount = document.querySelector("#favoriteCount");
+const notFound = document.querySelector("#notFound");
+const loadError = document.querySelector("#loadError");
 
 let favoriteIds = loadFavoriteIds();
 
@@ -46,20 +49,34 @@ function handleFavoriteClick(event) {
   const pokemonId = Number(button.dataset.pokemonId);
   toggleFavorite(pokemonId);
   markFavoriteButtons(pokemonId);
+
+  if (isFavoritesView()) showFavorites();
 }
 
 async function showFavorites() {
   loadMoreBtn.classList.add("hidden");
-  const sortedIds = [...favoriteIds].sort((a, b) => a - b);
-  const promises = sortedIds.map((id) => loadPokemonById(id));
+  notFound.classList.add("hidden");
 
-  const pokemons = await Promise.all(promises);
+  if (favoriteIds.length === 0) return showNoFavorites();
 
-  renderPokemonList(pokemons, true);
   markActiveView(showFavoritesBtn);
+  try {
+    const pokemons = await loadFavoritePokemons();
+    renderPokemonList(pokemons, true);
+  } catch (error) {
+    console.error(error);
+    loadError.classList.remove("hidden");
+  }
+}
+
+function loadFavoritePokemons() {
+  const sortedIds = [...favoriteIds].sort((a, b) => a - b);
+  return Promise.all(sortedIds.map((id) => loadPokemonById(id)));
 }
 
 function showAll() {
+  notFound.classList.add("hidden");
+  loadError.classList.add("hidden");
   renderPokemonList(allPokemons, true);
   loadMoreBtn.classList.remove("hidden");
   markActiveView(showAllBtn);
@@ -84,4 +101,20 @@ function markFavoriteButtons(pokemonId) {
   buttons.forEach((button) =>
     button.setAttribute("aria-pressed", isFavorite(pokemonId)),
   );
+}
+
+function showNoFavorites() {
+  renderPokemonList([], true);
+  notFound.textContent = translate("no-favorites");
+  notFound.classList.remove("hidden");
+  markActiveView(showFavoritesBtn);
+}
+
+function isFavoritesView() {
+  return showFavoritesBtn.getAttribute("aria-pressed") === "true";
+}
+
+export function resetView() {
+  notFound.classList.add("hidden");
+  markActiveView(showAllBtn);
 }

@@ -1,7 +1,7 @@
 export const TRANSLATIONS = {
   en: {
     "search-placeholder": "Search Pokémon…",
-    "footer-created": "Created by Christopher Braun · 2026",
+    "footer-created": "Fan project created by Christopher Braun · 2026",
     "footer-imprint": "Imprint",
     "footer-privacy": "Privacy",
     "footer-source": "Data from ",
@@ -13,6 +13,8 @@ export const TRANSLATIONS = {
     "load-error":
       "Could not load Pokémon. Please check your connection and try again.",
     "no-results": "No Pokémon found matching",
+    "no-favorites":
+      "No favorites yet. Tap the heart on a card to save a Pokémon.",
     "does-not-evolve": "Does not evolve",
     "evolution-error": "Could not load evolution.",
     "base-stats": "Base Stats",
@@ -46,7 +48,7 @@ export const TRANSLATIONS = {
   },
   de: {
     "search-placeholder": "Pokémon suchen …",
-    "footer-created": "Erstellt von Christopher Braun · 2026",
+    "footer-created": "Fanprojekt erstellt von Christopher Braun · 2026",
     "footer-imprint": "Impressum",
     "footer-privacy": "Datenschutz",
     "footer-source": "Daten von der ",
@@ -58,6 +60,9 @@ export const TRANSLATIONS = {
     "load-error":
       "Pokémon konnten nicht geladen werden. Bitte prüfe deine Verbindung und versuche es erneut.",
     "no-results": "Kein Pokémon gefunden für",
+    "no-favorites":
+      "Noch keine Favoriten. Tippe auf das Herz einer Karte, um ein Pokémon zu speichern.",
+
     "does-not-evolve": "Entwickelt sich nicht",
     "evolution-error": "Entwicklung konnte nicht geladen werden.",
     "base-stats": "Basiswerte",

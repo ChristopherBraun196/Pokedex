@@ -1,6 +1,7 @@
 import { REGIONS } from "../data/regions.js";
 import { switchRegion } from "../data/data.js";
 import { resetSearch } from "./search.js";
+import { resetView } from "./favorites.js";
 
 const regionNav = document.querySelector("#regionNav");
 const regions = document.querySelector(".regions");
@@ -20,6 +21,8 @@ function handleRegionClick(event) {
 
   if (!button) return;
   resetSearch();
+  resetView();
+
   switchRegion(button.dataset.region);
   markActiveRegion(button);
   regionCurrent.textContent = button.dataset.region;
