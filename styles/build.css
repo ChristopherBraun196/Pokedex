@@ -35,6 +35,8 @@
     --color-lamp-red: #ff6b6b;
     --color-lamp-yellow: #ffcb05;
     --color-lamp-green: #5bd46d;
+    --color-accent: #ffcb05;
+    --color-accent-light: #ffe27a;
     --font-display: "Unbounded", sans-serif;
     --font-body: "Figtree", sans-serif;
   }
@@ -651,6 +653,76 @@
 .regions--open .regions__chevron {
   rotate: 180deg;
 }
+.footer {
+  background-color: var(--color-outline);
+  color: var(--color-white);
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  @media (width >= 48rem) {
+    display: grid;
+  }
+  @media (width >= 48rem) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  margin-inline: auto;
+  max-width: var(--container-7xl);
+  padding-inline: calc(var(--spacing) * 4);
+  padding-block: calc(var(--spacing) * 5);
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  text-align: center;
+  font-size: 15px;
+}
+@media (width >= 48rem) {
+  .footer__credit {
+    text-align: left;
+  }
+}
+.footer__links {
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--spacing) * 4);
+}
+.footer__link {
+  --tw-font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  @media (prefers-reduced-motion: no-preference) {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-accent);
+    }
+  }
+  &:focus-visible {
+    outline-style: var(--tw-outline-style);
+    outline-width: 3px;
+  }
+  &:focus-visible {
+    outline-color: var(--color-lens);
+  }
+}
+.footer__link--accent {
+  color: var(--color-accent);
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-accent-light);
+    }
+  }
+}
+@media (width >= 48rem) {
+  .footer__source {
+    text-align: right;
+  }
+}
 @font-face {
   font-family: "Unbounded";
   src: url("../assets/fonts/Unbounded/Unbounded-VariableFont_wght.woff2") format("woff2");
@@ -668,6 +740,7 @@
   --color-surface: #1e2230;
   --color-ink: #f2f4f8;
   --color-muted: #b5bac8;
+  --color-outline: #0a0b10;
 }
 body {
   background-color: var(--color-ground);

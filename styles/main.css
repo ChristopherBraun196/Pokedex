@@ -6,6 +6,7 @@
 @import "./blocks/theme-toggle.css";
 @import "./blocks/toolbar.css";
 @import "./blocks/regions.css";
+@import "./blocks/footer.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -36,6 +37,8 @@
   --color-lamp-red: #ff6b6b;
   --color-lamp-yellow: #ffcb05;
   --color-lamp-green: #5bd46d;
+  --color-accent: #ffcb05;
+  --color-accent-light: #ffe27a;
 
   --font-display: "Unbounded", sans-serif;
   --font-body: "Figtree", sans-serif;
@@ -46,6 +49,7 @@
   --color-surface: #1e2230;
   --color-ink: #f2f4f8;
   --color-muted: #b5bac8;
+  --color-outline: #0a0b10;
 }
 
 body {

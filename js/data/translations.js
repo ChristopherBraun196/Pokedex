@@ -1,6 +1,11 @@
 export const TRANSLATIONS = {
   en: {
     "search-placeholder": "Search Pokémon…",
+    "footer-created": "Created by Christopher Braun · 2026",
+    "footer-imprint": "Imprint",
+    "footer-privacy": "Privacy",
+    "footer-source": "Data from",
+
     "show-all": "All",
     "show-favorites": "Favorites",
     "reset-search": "Reset",
@@ -39,6 +44,11 @@ export const TRANSLATIONS = {
   },
   de: {
     "search-placeholder": "Pokémon suchen …",
+    "footer-created": "Erstellt von Christopher Braun · 2026",
+    "footer-imprint": "Impressum",
+    "footer-privacy": "Datenschutz",
+    "footer-source": "Daten von der ",
+
     "show-all": "Alle",
     "show-favorites": "Favoriten",
     "reset-search": "Zurücksetzen",

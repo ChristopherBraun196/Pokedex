@@ -192,14 +192,38 @@
       id="openPokemonDialog"
     ></dialog>
 
-    <footer>
-      <div class="FooterLinks">
-        <span>Created by Christopher Braun</span>
-      </div>
-      <div class="FooterLinks">
-        <span>2026</span>
+    <footer class="footer">
+      <div class="footer__inner">
+        <span class="footer__credit" data-i18n="footer-created"
+          >Created by Christopher Braun · 2026</span
+        >
+        <nav class="footer__links" aria-label="Legal">
+          <a
+            class="footer__link"
+            href="https://christopher-braun-dev.de/impressum.html"
+            data-i18n="footer-imprint"
+            >Imprint</a
+          >
+          <a
+            class="footer__link"
+            href="https://christopher-braun-dev.de/datenschutz.html"
+            data-i18n="footer-privacy"
+            >Privacy</a
+          >
+        </nav>
+        <span class="footer__source">
+          <span data-i18n="footer-source">Data from</span>
+          <a
+            class="footer__link footer__link--accent"
+            href="https://pokeapi.co"
+            target="_blank"
+            rel="noopener"
+            >PokéAPI</a
+          >
+        </span>
       </div>
     </footer>
+
     <script src="./js/main.js" type="module"></script>
   </body>
 </html>
