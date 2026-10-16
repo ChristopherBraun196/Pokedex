@@ -1588,6 +1588,13 @@ body:has(.detail[open]) {
   border-color: var(--color-outline);
   background-color: var(--color-white);
 }
+.list-actions__slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--spacing) * 13);
+  height: calc(var(--spacing) * 13);
+}
 .list-actions__error {
   max-width: var(--container-md);
   padding-inline: calc(var(--spacing) * 4.5);

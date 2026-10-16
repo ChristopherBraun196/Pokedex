@@ -36,6 +36,11 @@
   @apply rounded-full border-3 border-outline bg-white;
 }
 
+.list-actions__slot {
+  @apply flex items-center justify-center;
+  @apply size-13;
+}
+
 .list-actions__error {
   @apply max-w-md;
   @apply px-4.5 py-3.5;
