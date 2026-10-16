@@ -22,17 +22,43 @@
         </div>
         <nav class="SearchBar" tabindex="0" aria-label="searchBar">
           <input
+            data-i18n-placeholder="search-placeholder"
             data-id="search-input"
             id="search"
             type="text"
             placeholder="Search.."
           />
-          <button data-id="search-button" aria-label="Search Pokémon" disabled>
+          <button
+            data-i18n="search-button"
+            data-id="search-button"
+            aria-label="Search Pokémon"
+            disabled
+          >
             Search
           </button>
-          <button id="themeToggleBtn" aria-label="Switch to dark mode">
+          <button
+            data-i18n="theme-toggle"
+            id="themeToggleBtn"
+            aria-label="Switch to dark mode"
+          >
             Dark
           </button>
+          <div id="languageSwitch">
+            <button
+              class="languageBtn"
+              data-lang="en"
+              aria-label="Switch to English"
+            >
+              EN
+            </button>
+            <button
+              class="languageBtn"
+              data-lang="de"
+              aria-label="Auf Deutsch umschalten"
+            >
+              DE
+            </button>
+          </div>
         </nav>
       </div>
     </header>
@@ -40,8 +66,18 @@
       <nav id="regionNav" aria-label="Region"></nav>
 
       <div class="menu-bars">
-        <button id="showAllBtn" aria-label="Show all Pokémon">All</button>
-        <button id="showFavoritesBtn" aria-label="Show favorite Pokémon">
+        <button
+          data-i18n="show-all"
+          id="showAllBtn"
+          aria-label="Show all Pokémon"
+        >
+          All
+        </button>
+        <button
+          data-i18n="show-favorites"
+          id="showFavoritesBtn"
+          aria-label="Show favorite Pokémon"
+        >
           Favorites
         </button>
       </div>
@@ -50,10 +86,11 @@
         <div id="loading-spinner" class="hidden">
           <div class="spinner"></div>
         </div>
-        <p id="loadError" class="hidden">
+        <p data-i18n="load-error" id="loadError" class="hidden">
           Could not load Pokémon. Please check your connection and try again.
         </p>
         <button
+          data-i18n="reset-search"
           id="resetSearchBtn"
           class="hidden resetBtn"
           aria-label="Reset search"
@@ -62,6 +99,7 @@
         </button>
 
         <button
+          data-i18n="load-more"
           data-id="load-more-button"
           aria-label="Load more Pokémon"
           id="loadMoreBtn"
